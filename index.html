@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankOps Academy</title>
+    <style>
+        :root {
+            --primary-color: #214E9A;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --light-gray: #e9ecef;
+            --medium-gray: #ced4da;
+            --dark-gray: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --border-radius: 0.75rem; /* rounded-xl equivalent */
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            display: flex;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            border-right: 1px solid var(--light-gray);
+            padding: 1.5rem 1rem;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            box-shadow: var(--box-shadow);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav li button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border: none;
+            background-color: transparent;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        
+        .sidebar nav li button:hover {
+            background-color: var(--light-gray);
+        }
+
+        .sidebar nav li button.active {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .sidebar nav li button img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: var(--light-gray); /* Placeholder bg */
+        }
+
+
+        .main-content {
+            margin-left: 250px; /* Same as sidebar width */
+            padding: 2rem;
+            width: calc(100% - 250px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -1px; /* Overlap border */
+             transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tab-button:hover {
+             color: var(--primary-color);
+        }
+
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .content-area {
+            flex-grow: 1;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .resource-card img {
+            width: 100%;
+            height: 150px; /* Fixed height for consistency */
+            object-fit: cover; /* Or 'contain' */
+            border-radius: calc(var(--border-radius) - 0.5rem); /* Slightly smaller radius */
+            margin-bottom: 1rem;
+             background-color: var(--light-gray); /* Placeholder bg */
+        }
+
+        .resource-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .resource-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            flex-grow: 1; /* Make text take available space */
+        }
+        
+        .resource-card .details {
+             font-size: 0.85rem;
+             color: var(--dark-gray);
+             margin-bottom: 0.75rem;
+        }
+
+        .resource-card a {
+            display: inline-block;
+            margin-top: auto; /* Push link to bottom */
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: calc(var(--border-radius) / 2);
+            text-align: center;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+        
+        .resource-card a:hover {
+            background-color: #1a3d7a; /* Darker blue */
+        }
+
+        /* Quiz Styles */
+        #quiz-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .quiz-question:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .quiz-question p {
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-question span.difficulty {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--dark-gray);
+            margin-left: 10px;
+        }
+
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .quiz-options label:hover {
+            background-color: var(--light-gray);
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+            accent-color: var(--primary-color);
+        }
+
+        #submit-quiz {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        #submit-quiz:hover {
+            background-color: #1a3d7a;
+        }
+
+        #quiz-result {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        #quiz-result.pass {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        #quiz-result.fail {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        h2#week-title {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+        
+        #learning-outcomes {
+            margin-bottom: 1.5rem;
+            background-color: #e7f0ff; /* Light blue bg */
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+        }
+        
+         #learning-outcomes h3 {
+             margin-bottom: 0.75rem;
+             font-size: 1.1rem;
+             color: var(--primary-color);
+         }
+         
+         #learning-outcomes ul {
+             list-style-position: inside;
+             padding-left: 0;
+         }
+         
+          #learning-outcomes li {
+              margin-bottom: 0.3rem;
+              font-size: 0.95rem;
+          }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                 flex-direction: column;
+            }
+            .sidebar {
+                position: static; /* Change from fixed */
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--light-gray);
+                flex-direction: row; /* Make header and nav horizontal */
+                overflow-x: auto; /* Allow horizontal scrolling for buttons */
+                padding: 0.5rem;
+                align-items: center;
+            }
+            
+            .sidebar-header {
+                margin-bottom: 0;
+                margin-right: 1rem;
+                font-size: 1.2rem;
+                min-width: 150px; /* Prevent shrinking too much */
+            }
+            
+            .sidebar nav {
+                 display: flex; /* Align buttons horizontally */
+                 flex-grow: 1;
+            }
+            
+            .sidebar nav ul {
+                display: flex; /* Align buttons horizontally */
+            }
+            
+             .sidebar nav li {
+                flex-shrink: 0; /* Prevent buttons from shrinking */
+            }
+
+            .sidebar nav li button {
+                padding: 0.5rem;
+                 margin-bottom: 0;
+                 margin-right: 0.5rem;
+                 font-size: 0.85rem;
+            }
+            
+            .sidebar nav li button img {
+                 width: 20px;
+                 height: 20px;
+                 margin-right: 5px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 1rem;
+            }
+            
+            .tabs {
+                margin-bottom: 1rem;
+            }
+            
+            .tab-button {
+                 padding: 0.5rem 1rem;
+                 font-size: 0.9rem;
+            }
+            
+            .resource-grid {
+                 grid-template-columns: 1fr; /* Stack cards on mobile */
+                 gap: 1rem;
+             }
+             
+            #quiz-form {
+                 padding: 1rem;
+            }
+            
+             h2#week-title {
+                font-size: 1.5rem;
+             }
+             
+             #learning-outcomes {
+                 padding: 0.75rem 1rem;
+             }
+             
+             #learning-outcomes h3 {
+                 font-size: 1rem;
+             }
+             
+             #learning-outcomes li {
+                 font-size: 0.9rem;
+             }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+             <div class="sidebar-header">BankOps Academy</div>
+            <nav id="sidebar-nav">
+                <ul>
+                    </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <h2 id="week-title"></h2>
+            <div id="learning-outcomes">
+                <h3>Learning Outcomes</h3>
+                <ul></ul>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-button active" data-tab="lessons-content">Lessons</button>
+                <button class="tab-button" data-tab="quiz-content">Quiz</button>
+            </div>
+
+            <div class="content-area">
+                <div id="lessons-content" class="tab-content active">
+                    <div class="resource-grid">
+                        </div>
+                </div>
+                <div id="quiz-content" class="tab-content">
+                    <form id="quiz-form">
+                        <button type="submit" id="submit-quiz">Submit Quiz</button>
+                    </form>
+                    <div id="quiz-result" style="display: none;"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const courseData = [
+            // Week 1: Foundations & Governance
+            {
+                title: "Week 1: Introduction to U.S. Banking & Governance Fundamentals",
+                outcomes: [
+                    "Describe the U.S. dual banking system and different charter types (national vs. state).",
+                    "Explain the primary roles, duties (care, loyalty, obedience), and structure of a bank's Board of Directors.",
+                    "Identify key corporate governance principles as expected by regulators (e.g., independence, expertise, oversight).",
+                    "Define the 'M' (Management) component of the CAMELS rating system and its significance.",
+                ],
+                resources: [
+                    { type: 'doc', title: "FDIC: Risk Management Manual - Section 1.1 Corporate Governance", link: "https://www.fdic.gov/regulations/safety-soundness/manual/section1-1.pdf", range: "Pages 3-12", note: "Establishes regulatory expectations for effective board oversight and sound corporate governance practices.", thumb: "fdic_thumb.png" },
+                    { type: 'doc', title: "OCC: Comptroller's Handbook - Corporate and Risk Governance", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#corp", range: "Booklet: Directors' Responsibilities Pages 1-8", note: "Details the fiduciary duties and legal responsibilities of national bank directors.", thumb: "occ_thumb.png" },
+                    { type: 'doc', title: "Federal Reserve: Commercial Bank Examination Manual - §1010.1", link: "https://www.federalreserve.gov/publications/files/cbem.pdf", range: "Pages 1-4 (PDF pages 17-20)", note: "Provides an overview of the U.S. banking structure and the role of bank directors.", thumb: "fed_thumb.png" },
+                    { type: 'doc', title: "FDIC: CAMELS Rating System Overview", link: "https://www.fdic.gov/regulations/safety-soundness/risk-management/camels/", range: "Section on 'Management'", note: "Explains how regulators assess the capability and effectiveness of bank management and the board.", thumb: "fdic_thumb.png" },
+                     { type: 'video', title: "ABA: Bank Governance Essentials (Certificate Overview)", link: "https://www.aba.com/training-events/online-training/bank-governance-certificate", range: "Video: Module Descriptions", note: "Introduces key concepts covered in formal bank governance training.", thumb: "aba_thumb.png" }
+                ],
+                quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: The U.S. banking system, featuring both federal and state regulators and chartering authorities, is known as the:", o: ["Unitary system", "Dual banking system", "Federal system", "Consolidated system"], a: 1, d: "Easy" },
+                    { q: "Q2: A bank chartered by the Office of the Comptroller of the Currency (OCC) is a:", o: ["State bank", "Federal savings association", "National bank", "Credit union"], a: 2, d: "Easy" },
+                    { q: "Q3: The ultimate responsibility for the oversight and direction of a bank rests with the:", o: ["CEO", "Chief Risk Officer", "Board of Directors", "Senior Loan Committee"], a: 2, d: "Easy" },
+                    { q: "Q4: Which is NOT a primary fiduciary duty of a bank director?", o: ["Duty of Care", "Duty of Loyalty", "Duty of Profit Maximization", "Duty of Obedience"], a: 2, d: "Easy" },
+                    { q: "Q5: The CAMELS rating system is used by regulators primarily to assess a bank's:", o: ["Customer satisfaction", "Overall safety and soundness", "Marketing effectiveness", "Technology innovation"], a: 1, d: "Easy" },
+                    { q: "Q6: What does the 'M' in CAMELS stand for?", o: ["Marketing", "Management", "Market Risk", "Mortgages"], a: 1, d: "Easy" },
+                    { q: "Q7: An effective board ensures that management implements appropriate:", o: ["Hiring freezes", "Risk management practices", "Advertising campaigns", "Branch closures"], a: 1, d: "Easy" },
+                    { q: "Q8: A director's Duty of Care requires them to act:", o: ["Only on CEO's instructions", "In good faith and with reasonable prudence", "To maximize short-term profits", "Based on personal intuition"], a: 1, d: "Easy" },
+                    { q: "Q9: Who appoints the members of a bank's Board of Directors?", o: ["The FDIC", "The OCC", "The Bank's Shareholders", "The Bank's CEO"], a: 2, d: "Easy" },
+                    { q: "Q10: An independent director is one who:", o: ["Works full-time at the bank", "Has no material relationship with the bank other than board service", "Is related to the CEO", "Owns less than 1% of the bank's stock"], a: 1, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: Which regulatory agency is the primary federal supervisor for state-chartered banks that are NOT members of the Federal Reserve System?", o: ["OCC", "Federal Reserve", "FDIC", "FinCEN"], a: 2, d: "Medium" },
+                    { q: "Q12: The Duty of Loyalty primarily prohibits directors from engaging in:", o: ["Strategic planning", "Setting compensation", "Self-dealing and conflicts of interest", "Approving large loans"], a: 2, d: "Medium" },
+                    { q: "Q13: Assessing the board's collective expertise and the effectiveness of its committee structure falls under which CAMELS component?", o: ["Capital Adequacy", "Asset Quality", "Management", "Sensitivity to Market Risk"], a: 2, d: "Medium" },
+                    { q: "Q14: A key function of the board's audit committee typically includes oversight of:", o: ["Loan underwriting", "Internal and external auditors", "Marketing strategy", "Human resources policies"], a: 1, d: "Medium" },
+                    { q: "Q15: Establishing the bank's overall 'risk appetite' is a core responsibility of the:", o: ["Chief Financial Officer", "Head Teller", "Board of Directors", "Internal Audit Department"], a: 2, d: "Medium" },
+                    { q: "Q16: The OCC's guidance on corporate governance emphasizes the importance of a 'tone at the top' set by:", o: ["Regulators", "The Board and Senior Management", "Major Shareholders", "Industry Associations"], a: 1, d: "Medium" },
+                    { q: "Q17: Which factor is LEAST likely to be considered when evaluating the 'Management' component of CAMELS?", o: ["Board oversight effectiveness", "Depth and succession planning for senior management", "Responsiveness to regulatory concerns", "The bank's current stock price"], a: 3, d: "Medium" },
+                    { q: "Q18: The concept of 'board independence' is critical for ensuring:", o: ["Management always gets its way", "Objective oversight and challenge of management", "Faster decision-making", "Lower operating costs"], a: 1, d: "Medium" },
+                    { q: "Q19: The charter type (e.g., national vs. state) primarily determines a bank's:", o: ["Interest rate limits", "Primary federal regulator", "Branch locations", "Required number of employees"], a: 1, d: "Medium" },
+                    { q: "Q20: Corporate governance failures were identified as contributing factors in which major financial event?", o: ["The Dot-com bubble burst", "The 2008 Financial Crisis", "The Savings & Loan Crisis", "Both b and c"], a: 3, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: Under the Duty of Obedience, bank directors must ensure the bank complies with:", o: ["Shareholder preferences above all", "Applicable laws, regulations, and the bank's charter/bylaws", "Only federal regulations, not state", "Management directives without question"], a: 1, d: "Hard" },
+                    { q: "Q22: When regulators assign a composite CAMELS rating, the 'Management' component rating often acts as a:", o: ["Minor factor compared to Capital", "Tie-breaker only if other components are equal", "Cap or limiting factor on the overall rating", "Recommendation, not a requirement"], a: 2, d: "Hard" },
+                    { q: "Q23: The Business Judgment Rule generally protects directors from personal liability for decisions made:", o: ["Secretly", "In violation of the bank's policies", "On an informed basis, in good faith, and without conflicts of interest", "Solely to increase their own compensation"], a: 2, d: "Hard" },
+                    { q: "Q24: Which board committee is typically responsible for overseeing the bank's risk management framework and policies?", o: ["Compensation Committee", "Audit Committee", "Nominating/Governance Committee", "Risk Committee (or equivalent)"], a: 3, d: "Hard" },
+                    { q: "Q25: Evaluating the effectiveness of management's strategic plan and its alignment with the bank's risk appetite is a critical function related to which CAMELS component?", o: ["Earnings", "Liquidity", "Management", "Asset Quality"], a: 2, d: "Hard" }
+                ]
+            },
+            // Week 2: Regulatory Landscape & Compliance Intro
+             {
+                title: "Week 2: Regulatory Landscape & Compliance Introduction",
+                outcomes: [
+                    "Identify the primary U.S. federal banking regulators (OCC, FDIC, Federal Reserve) and their main jurisdictions.",
+                    "Explain the purpose and components of the CAMELS rating system (C, A, E, L, S).",
+                    "Define regulatory compliance in banking and its importance for safety and soundness.",
+                    "Recognize the concept of 'prudential regulation' focusing on bank solvency and stability.",
+                ],
+                resources: [
+                    { type: 'doc', title: "FDIC: Who is the FDIC?", link: "https://www.fdic.gov/about/learn/symbol/index.html", range: "Webpage Content", note: "Explains the FDIC's role in deposit insurance and bank supervision.", thumb: "fdic_thumb.png" },
+                    { type: 'doc', title: "OCC: Who We Are & What We Do", link: "https://www.occ.gov/about/what-we-do/index-what-we-do.html", range: "Webpage Sections: Mission, Vision, Core Values", note: "Outlines the OCC's mission to charter, regulate, and supervise national banks and federal savings associations.", thumb: "occ_thumb.png" },
+                    { type: 'doc', title: "Federal Reserve: Purposes & Functions", link: "https://www.federalreserve.gov/aboutthefed/pf.htm", range: "Section: Supervising and Regulating Banks", note: "Describes the Fed's role in supervising bank holding companies and state member banks.", thumb: "fed_thumb.png" },
+                    { type: 'doc', title: "FDIC: CAMELS Rating System Details", link: "https://www.fdic.gov/regulations/safety-soundness/risk-management/camels/", range: "Full Page Overview", note: "Provides a detailed breakdown of each CAMELS component (Capital, Assets, Management, Earnings, Liquidity, Sensitivity).", thumb: "fdic_thumb.png" },
+                    { type: 'course', title: "Coursera: Global Financial Crisis (Yale)", link: "https://www.coursera.org/learn/global-financial-crisis", range: "Week 1 Videos: Regulatory Failures", note: "Discusses the role of regulation (and lack thereof) in financial stability, providing context.", thumb: "coursera_thumb.png" }
+                ],
+                quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: Which agency charters and supervises national banks?", o: ["FDIC", "Federal Reserve", "OCC", "FinCEN"], a: 2, d: "Easy" },
+                    { q: "Q2: The FDIC's primary mission includes insuring deposits and:", o: ["Setting monetary policy", "Supervising state non-member banks", "Chartering credit unions", "Regulating brokerage firms"], a: 1, d: "Easy" },
+                    { q: "Q3: The Federal Reserve supervises bank holding companies and which type of banks?", o: ["National banks", "State non-member banks", "State member banks", "Federal savings associations"], a: 2, d: "Easy" },
+                    { q: "Q4: What does the 'C' in CAMELS stand for?", o: ["Compliance", "Credit", "Capital Adequacy", "Customer Service"], a: 2, d: "Easy" },
+                    { q: "Q5: What does the 'A' in CAMELS stand for?", o: ["Audit", "Asset Quality", "Administration", "Accountability"], a: 1, d: "Easy" },
+                    { q: "Q6: What does the 'E' in CAMELS stand for?", o: ["Efficiency", "Earnings", "Equity", "Examinations"], a: 1, d: "Easy" },
+                    { q: "Q7: What does the 'L' in CAMELS stand for?", o: ["Loans", "Liquidity", "Leverage", "Legal"], a: 1, d: "Easy" },
+                    { q: "Q8: What does the 'S' in CAMELS stand for?", o: ["Stability", "Sensitivity to Market Risk", "Shareholder Value", "Security"], a: 1, d: "Easy" },
+                    { q: "Q9: A CAMELS rating of '1' indicates a bank is considered:", o: ["Critically undercapitalized", "In need of improvement", "Strong and sound", "Facing imminent failure"], a: 2, d: "Easy" },
+                    { q: "Q10: Prudential regulation primarily aims to ensure a bank's:", o: ["Profitability", "Market share", "Solvency and financial stability", "Customer growth"], a: 2, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: The CAMELS rating scale ranges from 1 (best) to:", o: ["3", "5", "7", "10"], a: 1, d: "Medium" },
+                    { q: "Q12: Which CAMELS component assesses the level and quality of a bank's capital relative to its risk profile?", o: ["Asset Quality", "Earnings", "Capital Adequacy", "Liquidity"], a: 2, d: "Medium" },
+                    { q: "Q13: Evaluating the quality of loan underwriting and the level of problem assets falls under which CAMELS component?", o: ["Management", "Asset Quality", "Earnings", "Sensitivity to Market Risk"], a: 1, d: "Medium" },
+                    { q: "Q14: The ability of a bank to meet its short-term obligations without incurring unacceptable losses is assessed by the:", o: ["Capital Adequacy component", "Earnings component", "Liquidity component", "Management component"], a: 2, d: "Medium" },
+                    { q: "Q15: Assessing a bank's exposure to changes in interest rates, foreign exchange rates, and commodity prices relates to:", o: ["Asset Quality", "Liquidity", "Sensitivity to Market Risk", "Earnings"], a: 2, d: "Medium" },
+                    { q: "Q16: Regulatory compliance involves adhering to laws and regulations related to both prudential standards and:", o: ["Marketing slogans", "Consumer protection", "Employee benefits", "Building codes"], a: 1, d: "Medium" },
+                    { q: "Q17: A bank receiving a composite CAMELS rating of 4 or 5 is considered:", o: ["Well-managed", "Fundamentally sound", "To have serious deficiencies and be of supervisory concern", "Eligible for charter expansion"], a: 2, d: "Medium" },
+                    { q: "Q18: The Federal Financial Institutions Examination Council (FFIEC) primarily:", o: ["Charters banks", "Insures deposits", "Prescribes uniform principles and standards for federal bank examination", "Conducts monetary policy"], a: 2, d: "Medium" },
+                    { q: "Q19: Regulatory agencies conduct periodic __________ to assess a bank's condition and compliance.", o: ["Marketing surveys", "On-site examinations and off-site monitoring", "Shareholder meetings", "Technology upgrades"], a: 1, d: "Medium" },
+                    { q: "Q20: Failure to comply with banking regulations can result in:", o: ["Informal warnings only", "Mandatory branch closures", "Fines, enforcement actions, and reputational damage", "Automatic CEO bonuses"], a: 2, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: While the CAMELS components are rated individually, the composite rating reflects:", o: ["A simple average of the component ratings", "Only the Capital and Asset Quality ratings", "An overall assessment considering the interrelationships between components", "The rating assigned by the bank's internal audit"], a: 2, d: "Hard" },
+                    { q: "Q22: The Dodd-Frank Wall Street Reform and Consumer Protection Act of 2010 significantly impacted bank regulation by:", o: ["Eliminating the FDIC", "Creating the Consumer Financial Protection Bureau (CFPB)", "Reducing capital requirements", "Merging the OCC and Federal Reserve"], a: 1, d: "Hard" },
+                    { q: "Q23: Regulatory 'guidance' (e.g., OCC Bulletins, FDIC Financial Institution Letters) differs from formal 'regulation' in that guidance is generally:", o: ["Legally binding statute passed by Congress", "Non-public information", "Interpretive advice on how to comply with regulations, but can carry significant weight", "Optional reading for bank staff"], a: 2, d: "Hard" },
+                    { q: "Q24: The concept of 'regulatory capture' refers to situations where:", o: ["Regulators seize control of a failing bank", "A regulatory agency advances the commercial interests of the industry it regulates", "Banks successfully capture market share from competitors", "Regulators capture criminals involved in bank fraud"], a: 1, d: "Hard" },
+                    { q: "Q25: The 'Sensitivity to Market Risk' component became increasingly important after experiences with:", o: ["High inflation in the 1970s", "Failures caused by significant interest rate volatility", "The rise of digital banking", "The implementation of BSA/AML rules"], a: 1, d: "Hard" }
+                ]
+            },
+            // Week 3: Risk Management Fundamentals
+            {
+                title: "Week 3: Risk Management Fundamentals & Capital Adequacy",
+                outcomes: [
+                    "Identify the major categories of banking risk (Credit, Market, Liquidity, Operational, Compliance, Strategic, Reputational).",
+                    "Explain the concept of risk appetite and its role in bank strategy.",
+                    "Describe the basic principles of bank capital and why regulators require minimum capital levels.",
+                    "Define Tier 1 and Tier 2 capital and the concept of risk-weighted assets (RWAs).",
+                ],
+                resources: [
+                    { type: 'doc', title: "OCC: Comptroller's Handbook - Risk Management Framework", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#risk", range: "Booklet: Enterprise Risk Management - Sections 1-2", note: "Provides an overview of common risk categories faced by banks.", thumb: "occ_thumb.png" },
+                    { type: 'doc', title: "FDIC: Risk Management Manual - Section 2.1 Capital Adequacy", link: "https://www.fdic.gov/regulations/safety-soundness/manual/section2-1.pdf", range: "Pages 1-8", note: "Explains the importance of capital and introduces regulatory capital definitions.", thumb: "fdic_thumb.png" },
+                    { type: 'doc', title: "Federal Reserve: Basel III Capital Rules Overview", link: "https://www.federalreserve.gov/bankinforeg/basel/faq.htm", range: "FAQ Sections: General, Capital Components", note: "Summarizes key components of the international capital standards implemented in the US.", thumb: "fed_thumb.png" },
+                    { type: 'doc', title: "ABA: Enterprise Risk Management Fundamentals (Reference)", link: "https://www.aba.com/training-events/online-training/enterprise-risk-management-certificate", range: "Course Outline/Topics", note: "Highlights industry perspectives on identifying and managing diverse banking risks.", thumb: "aba_thumb.png" },
+                     { type: 'video', title: "Khan Academy: Tier 1 Capital Explained", link: "https://www.khanacademy.org/economics-finance-domain/core-finance/stock-and-bond-markets/bank-capital-requirements/v/tier-1-capital-explained", range: "0:00 - 5:00", note: "A simplified explanation of Tier 1 capital and its components.", thumb: "khan_thumb.png" }
+                ],
+                 quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: The risk of loss resulting from a borrower's failure to repay a loan is known as:", o: ["Market Risk", "Liquidity Risk", "Operational Risk", "Credit Risk"], a: 3, d: "Easy" },
+                    { q: "Q2: The risk of loss due to changes in market prices, such as interest rates or equity values, is:", o: ["Credit Risk", "Market Risk", "Compliance Risk", "Reputational Risk"], a: 1, d: "Easy" },
+                    { q: "Q3: The risk that a bank cannot meet its financial obligations as they come due is:", o: ["Strategic Risk", "Liquidity Risk", "Operational Risk", "Credit Risk"], a: 1, d: "Easy" },
+                    { q: "Q4: The risk of loss from failed internal processes, people, systems, or external events is:", o: ["Market Risk", "Liquidity Risk", "Operational Risk", "Strategic Risk"], a: 2, d: "Easy" },
+                    { q: "Q5: Bank capital primarily serves as a:", o: ["Source for employee bonuses", "Fund for marketing campaigns", "Cushion to absorb unexpected losses", "Replacement for deposit insurance"], a: 2, d: "Easy" },
+                    { q: "Q6: Regulators require banks to hold minimum capital levels to protect:", o: ["Shareholders", "Depositors and the deposit insurance fund", "Bank executives", "Competing banks"], a: 1, d: "Easy" },
+                    { q: "Q7: The highest quality form of regulatory capital is known as:", o: ["Tier 2 Capital", "Subordinated Debt", "Tier 1 Capital", "Loan Loss Reserves"], a: 2, d: "Easy" },
+                    { q: "Q8: Common Equity Tier 1 (CET1) capital primarily consists of:", o: ["Borrowed funds", "Common stock and retained earnings", "Subordinated debt", "Preferred stock"], a: 1, d: "Easy" },
+                    { q: "Q9: A bank's 'risk appetite' defines:", o: ["Its target profit margin", "The number of branches it will open", "The types and amount of risk it is willing to take", "Its customer service standards"], a: 2, d: "Easy" },
+                    { q: "Q10: Failure to comply with laws and regulations represents which type of risk?", o: ["Market Risk", "Compliance Risk", "Liquidity Risk", "Strategic Risk"], a: 1, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: Tier 2 capital typically includes instruments like subordinated debt and:", o: ["Common stock", "Retained earnings", "Allowances for loan and lease losses (up to limits)", "Goodwill"], a: 2, d: "Medium" },
+                    { q: "Q12: 'Risk-Weighted Assets' (RWAs) are calculated by multiplying the bank's assets by:", o: ["A standard percentage", "Risk weights assigned based on the credit risk of the asset", "The bank's Tier 1 capital ratio", "The prevailing interest rate"], a: 1, d: "Medium" },
+                    { q: "Q13: An asset with a lower risk weight (e.g., cash) requires ______ capital support compared to a higher-risk asset (e.g., a construction loan).", o: ["More", "Less", "The same amount of", "No"], a: 1, d: "Medium" },
+                    { q: "Q14: The risk that negative publicity regarding a bank's practices erodes public trust is:", o: ["Operational Risk", "Credit Risk", "Reputational Risk", "Market Risk"], a: 2, d: "Medium" },
+                    { q: "Q15: The risk arising from poor business decisions or improper implementation of decisions is:", o: ["Compliance Risk", "Liquidity Risk", "Strategic Risk", "Credit Risk"], a: 2, d: "Medium" },
+                    { q: "Q16: The Basel Accords (I, II, III) are international frameworks primarily focused on:", o: ["Consumer protection rules", "Cybersecurity standards", "Bank capital adequacy and risk management", "Payment system interoperability"], a: 2, d: "Medium" },
+                    { q: "Q17: Which ratio measures a bank's highest quality capital against its risk-weighted assets?", o: ["Total Capital Ratio", "Tier 1 Leverage Ratio", "Common Equity Tier 1 (CET1) Ratio", "Net Interest Margin"], a: 2, d: "Medium" },
+                    { q: "Q18: A robust Risk Management Framework typically involves identifying, measuring, __________, controlling, and reporting risks.", o: ["Ignoring", "Accepting", "Monitoring", "Selling"], a: 2, d: "Medium" },
+                    { q: "Q19: Operational risk events can include internal fraud, external cyberattacks, and:", o: ["Interest rate increases", "Loan defaults", "Natural disasters disrupting operations", "Stock market crashes"], a: 2, d: "Medium" },
+                    { q: "Q20: Setting a clear risk appetite statement helps a bank:", o: ["Eliminate all risks", "Align strategic decisions with risk tolerance", "Guarantee profitability", "Avoid regulatory examinations"], a: 1, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: Beyond minimum capital requirements, Basel III introduced capital _________ to ensure banks build up capital in good times to draw down in stress.", o: ["Floors", "Buffers (e.g., Capital Conservation Buffer)", "Ceilings", "Taxes"], a: 1, d: "Hard" },
+                    { q: "Q22: The Tier 1 Leverage Ratio measures Tier 1 capital against a bank's __________, providing a non-risk-weighted backstop.", o: ["Total risk-weighted assets", "Total deposits", "Average total consolidated assets", "Net income"], a: 2, d: "Hard" },
+                    { q: "Q23: 'Model Risk', the risk arising from using inaccurate or misused models for decision-making (e.g., pricing, risk assessment), is often considered a component of:", o: ["Credit Risk", "Market Risk", "Liquidity Risk", "Operational Risk"], a: 3, d: "Hard" },
+                    { q: "Q24: Regulatory capital calculations often involve significant deductions from capital, such as for:", o: ["Excess cash reserves", "Goodwill and certain intangible assets", "Highly rated government securities", "Retained earnings"], a: 1, d: "Hard" },
+                    { q: "Q25: Integrating risk management across different departments ('silos') into a holistic, bank-wide view is the goal of:", o: ["Siloed Risk Management", "Departmental Risk Assessment", "Enterprise Risk Management (ERM)", "Basic Risk Identification"], a: 2, d: "Hard" }
+                 ]
+            },
+             // Week 4: Financial Management & ALM
+            {
+                title: "Week 4: Financial & Balance Sheet Management - ALM Focus",
+                outcomes: [
+                    "Identify key components of a bank's balance sheet (Assets, Liabilities, Equity).",
+                    "Define Net Interest Income (NII) and Net Interest Margin (NIM) and their importance.",
+                    "Explain the role and function of the Asset Liability Committee (ALCO).",
+                    "Describe basic concepts of Asset Liability Management (ALM), including interest rate risk (IRR) management.",
+                ],
+                resources: [
+                    { type: 'doc', title: "FDIC: Risk Management Manual - Section 7.1 Interest Rate Risk", link: "https://www.fdic.gov/regulations/safety-soundness/manual/section7-1.pdf", range: "Pages 1-10", note: "Introduces Interest Rate Risk (IRR) and regulatory expectations for its management.", thumb: "fdic_thumb.png" },
+                    { type: 'doc', title: "OCC: Comptroller's Handbook - Interest Rate Risk", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#irr", range: "Booklet: Overview & Risk Management Process", note: "Details OCC guidance on identifying, measuring, monitoring, and controlling IRR.", thumb: "occ_thumb.png" },
+                    { type: 'video', title: "Khan Academy: Bank Balance Sheet Introduction", link: "https://www.khanacademy.org/economics-finance-domain/core-finance/accounting-and-financial-statements/balance-sheet-basics/v/introduction-to-the-balance-sheet", range: "Full Video (approx. 10 min)", note: "Provides a general overview of balance sheet structure, applicable to banks.", thumb: "khan_thumb.png" },
+                    { type: 'course', title: "ABA: Managing the Bank's Balance Sheet (Certificate Reference)", link: "https://www.aba.com/training-events/schools/bank-financial-management-school", range: "Curriculum Topics: ALM", note: "Shows industry focus on ALCO, IRR, liquidity, and balance sheet strategy.", thumb: "aba_thumb.png" },
+                    { type: 'doc', title: "Federal Reserve: Commercial Bank Examination Manual - §4010.1 ALM", link: "https://www.federalreserve.gov/publications/files/cbem.pdf", range: "Section 4010.1 Pages 1-5 (PDF pgs ~500+)", note: "Outlines examination procedures related to ALM and IRR management.", thumb: "fed_thumb.png" },
+                 ],
+                 quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: On a bank's balance sheet, loans made to customers are classified as:", o: ["Liabilities", "Equity", "Assets", "Income"], a: 2, d: "Easy" },
+                    { q: "Q2: Customer deposits held by a bank are classified as:", o: ["Assets", "Equity", "Liabilities", "Revenue"], a: 2, d: "Easy" },
+                    { q: "Q3: Bank Equity represents:", o: ["Total Deposits", "Total Loans", "The owners' stake in the bank (Assets - Liabilities)", "Net Interest Income"], a: 2, d: "Easy" },
+                    { q: "Q4: Net Interest Income (NII) is calculated as:", o: ["Total Income - Total Expenses", "Interest Income - Interest Expense", "Total Assets - Total Liabilities", "Interest Income / Earning Assets"], a: 1, d: "Easy" },
+                    { q: "Q5: Net Interest Margin (NIM) measures:", o: ["Total Profit", "Loan Growth", "The profitability of a bank's lending and funding activities (NII / Earning Assets)", "Operating Efficiency"], a: 2, d: "Easy" },
+                    { q: "Q6: The committee responsible for managing a bank's balance sheet structure and risks like IRR and liquidity is the:", o: ["Audit Committee", "Loan Committee", "Asset Liability Committee (ALCO)", "Marketing Committee"], a: 2, d: "Easy" },
+                    { q: "Q7: Asset Liability Management (ALM) primarily deals with managing risks arising from mismatches between:", o: ["Loan officers and underwriters", "Assets and liabilities in terms of timing, rates, and amount", "Marketing spend and revenue", "IT systems and user needs"], a: 1, d: "Easy" },
+                    { q: "Q8: Interest Rate Risk (IRR) is the risk that changes in interest rates will negatively impact a bank's:", o: ["Branch network", "Earnings and Capital", "Employee morale", "Marketing campaigns"], a: 1, d: "Easy" },
+                    { q: "Q9: If a bank has more rate-sensitive liabilities than rate-sensitive assets, it is considered:", o: ["Asset-sensitive", "Liability-sensitive", "Rate-neutral", "Immune to IRR"], a: 1, d: "Easy" },
+                    { q: "Q10: A bank that is liability-sensitive would generally see its NIM _________ when interest rates rise.", o: ["Increase", "Decrease", "Remain unchanged", "Become irrelevant"], a: 1, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: Common earning assets on a bank's balance sheet include loans and:", o: ["Customer deposits", "Investment securities", "Buildings and equipment", "Subordinated debt"], a: 1, d: "Medium" },
+                    { q: "Q12: Major interest-bearing liabilities for a bank typically include customer deposits and:", o: ["Cash", "Common stock", "Borrowed funds (e.g., FHLB advances)", "Goodwill"], a: 2, d: "Medium" },
+                    { q: "Q13: ALCO typically reviews reports on interest rate sensitivity gaps, funding sources, and:", o: ["Employee satisfaction surveys", "Liquidity position and projections", "Individual loan approvals", "Advertising effectiveness"], a: 1, d: "Medium" },
+                    { q: "Q14: 'Gap Analysis' is a common ALM tool used to measure:", o: ["Credit risk concentration", "The difference between rate-sensitive assets and liabilities over specific time horizons", "Operational efficiency", "Market share"], a: 1, d: "Medium" },
+                    { q: "Q15: An ALCO might use strategies like interest rate swaps or adjusting loan/deposit pricing to:", o: ["Increase credit risk", "Manage interest rate risk exposure", "Reduce capital levels", "Expand into new markets"], a: 1, d: "Medium" },
+                    { q: "Q16: 'Duration' is a measure used in ALM to estimate the _________ of assets and liabilities.", o: ["Credit quality", "Price sensitivity to interest rate changes", "Operational complexity", "Physical lifespan"], a: 1, d: "Medium" },
+                    { q: "Q17: A key objective of ALM is to stabilize:", o: ["Employee turnover", "Net Interest Margin (NIM) and protect economic value of equity (EVE)", "Branch traffic", "Competitor actions"], a: 1, d: "Medium" },
+                    { q: "Q18: Besides NII simulation, another common method to assess IRR is analyzing the sensitivity of:", o: ["Customer complaints", "The Economic Value of Equity (EVE)", "Marketing budgets", "Executive compensation"], a: 1, d: "Medium" },
+                    { q: "Q19: The bank's overall strategic plan and risk appetite should guide:", o: ["Individual teller transactions", "ALCO's balance sheet management decisions", "The color scheme of the website", "Hiring decisions for entry-level staff"], a: 1, d: "Medium" },
+                    { q: "Q20: Regulators expect banks to have robust policies, procedures, and controls for managing:", o: ["Social media presence", "Interest Rate Risk", "Cafeteria menus", "Office supplies"], a: 1, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: 'Basis Risk' in ALM refers to the risk that:", o: ["The bank runs out of cash", "Interest rates on different assets and liabilities change imperfectly correlatedly (e.g., Prime vs. LIBOR/SOFR)", "The bank's base capital falls below minimums", "A key ALM model is flawed"], a: 1, d: "Hard" },
+                    { q: "Q22: Non-maturity deposits (NMDs), like checking accounts, pose a challenge for IRR modeling due to their:", o: ["High interest rates", "Uncertain decay rates and sensitivity to interest rate changes", "Fixed maturity dates", "Lack of FDIC insurance"], a: 1, d: "Hard" },
+                    { q: "Q23: Economic Value of Equity (EVE) sensitivity analysis measures the potential long-term impact of interest rate changes on:", o: ["Next quarter's NII only", "The present value of the bank's expected future cash flows (net worth)", "The bank's stock price volatility", "Operational costs"], a: 1, d: "Hard" },
+                    { q: "Q24: An ALCO's responsibilities typically extend beyond IRR to include managing the bank's _________ position and contingency planning.", o: ["Market share", "Liquidity", "Reputational", "Compliance"], a: 1, d: "Hard" },
+                    { q: "Q25: Implementing an effective Funds Transfer Pricing (FTP) system helps a bank to:", o: ["Eliminate interest rate risk", "Attribute profitability correctly to different business lines based on funding costs and asset returns", "Set foreign exchange rates", "Calculate CAMELS ratings"], a: 1, d: "Hard" }
+                 ]
+            },
+             // Week 5: Credit Risk & Underwriting
+            {
+                title: "Week 5: Credit Risk Management & Underwriting",
+                outcomes: [
+                    "Identify different types of loans (e.g., C&I, CRE, Consumer) and their associated risks.",
+                    "Describe the key elements of the credit underwriting process (the 'Five Cs of Credit').",
+                    "Explain the purpose of loan policies and procedures.",
+                    "Recognize the importance of managing credit concentrations.",
+                ],
+                resources: [
+                    { type: 'doc', title: "OCC: Comptroller's Handbook - Commercial Lending", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#cl", range: "Booklet: Underwriting Section", note: "Details expectations for sound commercial loan underwriting practices.", thumb: "occ_thumb.png" },
+                    { type: 'doc', title: "FDIC: Risk Management Manual - Section 3.2 Loan Portfolio Management", link: "https://www.fdic.gov/regulations/safety-soundness/manual/section3-2.pdf", range: "Pages 1-15", note: "Covers regulatory perspectives on managing credit risk within the loan portfolio.", thumb: "fdic_thumb.png" },
+                     { type: 'doc', title: "OCC: Comptroller's Handbook - Concentrations of Credit", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#conc", range: "Booklet: Overview and Risk Management", note: "Explains the risks associated with credit concentrations and supervisory expectations.", thumb: "occ_thumb.png" },
+                     { type: 'course', title: "Training Cred: Introduction to Credit Analysis (General Concepts)", link: "https://trainingcredits.com/courses/introduction-to-credit-analysis/", range: "Module Summaries (e.g., 5 Cs)", note: "Illustrates foundational concepts used in credit underwriting training.", thumb: "trainingcred_thumb.png" }, // Placeholder link style
+                    { type: 'doc', title: "Federal Reserve: Commercial Bank Examination Manual - §2020.1 Credit Risk Mgmt", link: "https://www.federalreserve.gov/publications/files/cbem.pdf", range: "Section 2020.1 pp 1-10 (PDF pgs ~100+)", note: "Discusses the framework for assessing bank-wide credit risk management practices.", thumb: "fed_thumb.png" },
+                ],
+                 quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: Loans made to businesses for operational needs or expansion are typically classified as:", o: ["Consumer Loans", "Commercial and Industrial (C&I) Loans", "Residential Mortgages", "Credit Card Loans"], a: 1, d: "Easy" },
+                    { q: "Q2: Loans secured by real estate, including non-owner-occupied properties, are:", o: ["Commercial Real Estate (CRE) Loans", "C&I Loans", "Auto Loans", "Unsecured Loans"], a: 0, d: "Easy" },
+                    { q: "Q3: The process of evaluating a borrower's creditworthiness before granting a loan is called:", o: ["Marketing", "Depositing", "Underwriting", "Auditing"], a: 2, d: "Easy" },
+                    { q: "Q4: Which of the 'Five Cs of Credit' refers to the borrower's willingness and track record of repaying debt?", o: ["Capacity", "Capital", "Collateral", "Character"], a: 3, d: "Easy" },
+                    { q: "Q5: Which 'C' assesses the borrower's ability to repay the loan from their income or cash flow?", o: ["Character", "Capacity", "Conditions", "Collateral"], a: 1, d: "Easy" },
+                    { q: "Q6: Which 'C' refers to the borrower's financial net worth or equity?", o: ["Collateral", "Conditions", "Capital", "Capacity"], a: 2, d: "Easy" },
+                    { q: "Q7: Which 'C' represents assets pledged by the borrower to secure the loan?", o: ["Capital", "Character", "Collateral", "Conditions"], a: 2, d: "Easy" },
+                    { q: "Q8: Which 'C' considers the purpose of the loan and the economic environment?", o: ["Capacity", "Conditions", "Character", "Collateral"], a: 1, d: "Easy" },
+                    { q: "Q9: A bank's Loan Policy primarily serves to:", o: ["Attract new customers", "Set interest rates", "Provide guidelines for lending activities and risk controls", "Determine employee bonuses"], a: 2, d: "Easy" },
+                    { q: "Q10: Having too many loans concentrated in one industry, geographic area, or loan type increases:", o: ["Diversification benefits", "Concentration Risk", "Liquidity", "Capital ratios"], a: 1, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: Credit risk management involves underwriting individual loans and managing the risk of the entire:", o: ["Deposit base", "Loan Portfolio", "Investment Portfolio", "Branch network"], a: 1, d: "Medium" },
+                    { q: "Q12: Loan covenants are conditions included in loan agreements that borrowers must meet. They are used to:", o: ["Increase the loan amount", "Waive interest payments", "Protect the lender by requiring certain actions or financial thresholds", "Guarantee loan approval"], a: 2, d: "Medium" },
+                    { q: "Q13: The Allowance for Loan and Lease Losses (ALLL) or Allowance for Credit Losses (ACL under CECL) is:", o: ["A liability account", "An equity account", "A reserve set aside to cover expected future loan losses", "Revenue generated from fees"], a: 2, d: "Medium" },
+                    { q: "Q14: Regulators often express concern when CRE concentrations exceed certain percentages of bank capital, such as:", o: ["10% for total CRE", "50% for acquisition, development, construction (ADC) loans", "300% for total CRE and 100% for ADC (as supervisory guidelines)", "No specific guidelines exist"], a: 2, d: "Medium" },
+                    { q: "Q15: A loan grading or risk rating system helps banks to:", o: ["Set deposit rates", "Identify problem loans early and manage portfolio risk", "Determine branch locations", "Calculate marketing ROI"], a: 1, d: "Medium" },
+                    { q: "Q16: Analyzing a business borrower's financial statements (Balance Sheet, Income Statement, Cash Flow) is crucial for assessing:", o: ["Character", "Collateral", "Capacity and Capital", "Conditions"], a: 2, d: "Medium" },
+                    { q: "Q17: 'Loan Review' is an independent function within a bank that:", o: ["Approves all loans", "Assesses the quality of underwriting and the accuracy of risk ratings", "Manages customer relationships", "Sets the bank's overall lending strategy"], a: 1, d: "Medium" },
+                    { q: "Q18: High concentrations of credit can make a bank particularly vulnerable to:", o: ["Interest rate increases", "Downturns in specific sectors or regions", "Improvements in technology", "Increased regulation"], a: 1, d: "Medium" },
+                    { q: "Q19: A sound loan policy should define the bank's trade area, types of loans offered, lending limits, and:", o: ["Marketing slogans", "Underwriting standards and approval processes", "Employee dress code", "Competitors' interest rates"], a: 1, d: "Medium" },
+                    { q: "Q20: The transition from ALLL to CECL (Current Expected Credit Losses) requires banks to estimate losses over:", o: ["The past year", "The next quarter", "The lifetime of the loan", "A five-year period"], a: 2, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: In underwriting, 'global cash flow analysis' typically involves assessing the combined cash flow of:", o: ["All bank customers", "The borrowing entity and related entities or guarantors", "The entire U.S. economy", "The bank's loan portfolio"], a: 1, d: "Hard" },
+                    { q: "Q22: Stress testing the loan portfolio involves simulating adverse economic conditions to assess:", o: ["Potential future marketing opportunities", "Potential increases in credit losses and impact on capital", "Employee performance under pressure", "IT system capacity"], a: 1, d: "Hard" },
+                    { q: "Q23: Exceptions to loan policy should be:", o: ["Common practice", "Strictly prohibited", "Documented, justified, and approved at an appropriate level", "Handled only by the CEO"], a: 2, d: "Hard" },
+                    { q: "Q24: Managing CRE concentration risk involves not just monitoring levels but also assessing the quality of underwriting, market conditions, and:", o: ["The number of competitors", "The bank's capital levels and risk management practices", "The bank's advertising budget", "Customer satisfaction scores"], a: 1, d: "Hard" },
+                    { q: "Q25: For C&I lending, analyzing industry trends, competitive positioning, and management quality contributes significantly to assessing which 'C'?", o: ["Collateral", "Capital", "Conditions (and indirectly Character/Capacity)", "None of the above"], a: 2, d: "Hard" }
+                 ]
+            },
+             // Week 6: Operations & Technology Core
+            {
+                title: "Week 6: Operations, Technology & Core Systems",
+                outcomes: [
+                    "Identify major U.S. payment systems (e.g., ACH, Fedwire, CHIPS, Card Networks).",
+                    "Describe the function of a bank's core operating system.",
+                    "Recognize key operational areas like deposit operations and treasury management.",
+                    "Understand the importance of IT infrastructure reliability and security in banking.",
+                ],
+                resources: [
+                    { type: 'doc', title: "Federal Reserve: Payments Systems Overview", link: "https://www.federalreserve.gov/paymentsystems/default.htm", range: "Sections: ACH, Wire, Checks", note: "Describes the payment services provided and overseen by the Federal Reserve.", thumb: "fed_thumb.png" },
+                    { type: 'doc', title: "FFIEC: IT Examination Handbook - Operations Booklet", link: "https://ithandbook.ffiec.gov/it-booklets/operations.aspx", range: "Sections: Core Processing, Payment Systems", note: "Outlines regulatory expectations for managing operational risks related to IT and payments.", thumb: "ffiec_thumb.png" },
+                    { type: 'doc', title: "OCC: Comptroller's Handbook - Retail Payments Systems", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#retpay", range: "Booklet: Overview", note: "Covers risks associated with various retail payment channels like cards and ACH.", thumb: "occ_thumb.png" },
+                    { type: 'course', title: "Coursera: FinTech and Transformation in Financial Services (Copenhagen BS)", link: "https://www.coursera.org/learn/fintech-financial-services", range: "Week 2: Payments & Infrastructure", note: "Explores the technology underpinning modern payment systems.", thumb: "coursera_thumb.png" },
+                    { type: 'doc', title: "NACHA: ACH Network Overview", link: "https://www.nacha.org/ach-network", range: "Webpage Content: How ACH Works", note: "Explains the Automated Clearing House (ACH) network used for direct deposit, direct payments, etc.", thumb: "nacha_thumb.png" } // NACHA is key for ACH
+                ],
+                 quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: Which payment system is typically used for large-value, time-sensitive payments between banks in the U.S.?", o: ["ACH", "Check 21", "Fedwire Funds Service", "Debit Card Network"], a: 2, d: "Easy" },
+                    { q: "Q2: The Automated Clearing House (ACH) network is commonly used for:", o: ["International wire transfers", "Direct deposit of payroll and government benefits", "Large-value corporate payments only", "Real-time stock trading"], a: 1, d: "Easy" },
+                    { q: "Q3: CHIPS (Clearing House Interbank Payments System) is another major U.S. system primarily used for:", o: ["Small retail payments", "Check clearing", "Large-value international and domestic payments", "Cryptocurrency transfers"], a: 2, d: "Easy" },
+                    { q: "Q4: Visa and Mastercard operate major networks for processing:", o: ["Wire transfers", "ACH payments", "Credit and debit card transactions", "Check images"], a: 2, d: "Easy" },
+                    { q: "Q5: The central computer system that manages a bank's customer accounts, transactions, and ledger is the:", o: ["Website server", "Core operating system (or Core Banking System)", "ATM network", "Fraud detection system"], a: 1, d: "Easy" },
+                    { q: "Q6: Posting transactions to customer accounts (deposits, withdrawals, loan payments) is a primary function of:", o: ["Marketing department", "Bank operations", "Human Resources", "Legal counsel"], a: 1, d: "Easy" },
+                    { q: "Q7: Services offered to business clients to help manage their cash flow, payments, and collections are known as:", o: ["Consumer lending", "Wealth management", "Treasury Management (or Cash Management)", "Mortgage servicing"], a: 2, d: "Easy" },
+                    { q: "Q8: Ensuring the bank's IT systems are available when needed relates to the concept of:", o: ["Profitability", "Reliability / Availability", "Market Share", "Credit Quality"], a: 1, d: "Easy" },
+                    { q: "Q9: Protecting bank and customer data from unauthorized access or cyberattacks is critical for:", o: ["Interest Rate Risk Management", "IT Security / Cybersecurity", "Branch Location Strategy", "Capital Planning"], a: 1, d: "Easy" },
+                    { q: "Q10: Banks rely on their core systems to maintain accurate:", o: ["Competitor interest rates", "Customer account balances and transaction histories", "Employee performance reviews", "Stock market predictions"], a: 1, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: Fedwire is operated by:", o: ["The Clearing House", "NACHA", "The Federal Reserve Banks", "A consortium of large private banks"], a: 2, d: "Medium" },
+                    { q: "Q12: ACH transactions are typically processed in:", o: ["Real-time", "Batches", "Continuously throughout the day", "Once a week"], a: 1, d: "Medium" },
+                    { q: "Q13: Core banking systems often handle functionalities beyond basic deposit/loan accounting, such as:", o: ["Advertising campaign design", "Customer Information File (CIF) management", "Competitor analysis", "Designing bank logos"], a: 1, d: "Medium" },
+                    { q: "Q14: Business Continuity Planning (BCP) in bank operations focuses on:", o: ["Planning the next marketing campaign", "Ensuring the bank can continue critical functions during a disruption", "Planning for employee retirement", "Developing new loan products"], a: 1, d: "Medium" },
+                    { q: "Q15: Deposit operations include tasks like check processing (often using Check 21 standards), exception handling, and:", o: ["Approving large commercial loans", "Managing the bank's investment portfolio", "Statement rendering and account maintenance", "Setting foreign exchange rates"], a: 2, d: "Medium" },
+                    { q: "Q16: The FFIEC IT Examination Handbook provides guidance to examiners on assessing a bank's:", o: ["Loan portfolio quality", "IT risk management practices and controls", "Marketing effectiveness", "Capital adequacy ratios"], a: 1, d: "Medium" },
+                    { q: "Q17: Implementing multi-factor authentication (MFA) for online banking access enhances:", o: ["Interest Rate Risk management", "Credit underwriting speed", "IT Security", "Liquidity"], a: 2, d: "Medium" },
+                    { q: "Q18: Many banks rely on third-party vendors for critical services like core processing. Managing these relationships involves:", o: ["Ignoring vendor performance", "Thorough due diligence and ongoing oversight (Vendor Management / TPRM)", "Letting vendors dictate all terms", "Avoiding vendor contracts"], a: 1, d: "Medium" },
+                    { q: "Q19: Real-Time Payments (RTP) networks are emerging systems designed to:", o: ["Slow down payment processing", "Process payments individually with immediate finality, 24/7", "Handle only international payments", "Replace credit cards entirely"], a: 1, d: "Medium" },
+                    { q: "Q20: Operational failures, such as a core system outage, can lead to significant financial losses and:", o: ["Improved customer satisfaction", "Reputational damage", "Reduced regulatory scrutiny", "Automatic capital increases"], a: 1, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: The concept of 'settlement finality' in payment systems like Fedwire means that:", o: ["Payments can be easily reversed", "Payment instructions are exchanged, but funds settlement occurs later", "Once processed, the payment is irrevocable and unconditional", "Only provisional credit is given"], a: 2, d: "Hard" },
+                    { q: "Q22: Legacy core banking systems, often based on older technology, can pose challenges for banks seeking to:", o: ["Maintain basic account balances", "Quickly integrate with new fintech solutions and offer innovative digital services", "Process checks", "Calculate interest"], a: 1, d: "Hard" },
+                    { q: "Q23: Straight-Through Processing (STP) in payments aims to:", o: ["Introduce manual checks at every step", "Automate the entire transaction process from initiation to settlement without manual intervention", "Slow down processing for better security", "Route all payments through a central government agency"], a: 1, d: "Hard" },
+                    { q: "Q24: The FFIEC IT Handbook's 'Architecture, Infrastructure, and Operations' (AIO) domain emphasizes the need for resilient infrastructure and:", o: ["Minimizing IT spending", "Effective change management processes", "Using outdated software", "Avoiding cloud services"], a: 1, d: "Hard" },
+                    { q: "Q25: Within Treasury Management, services like 'Positive Pay' and 'ACH Positive Pay/Filters' help corporate clients mitigate:", o: ["Interest rate risk", "Foreign exchange risk", "Check and ACH fraud risk", "Liquidity risk"], a: 2, d: "Hard" }
+                 ]
+            },
+             // Week 7: Consumer Protection & BSA/AML
+            {
+                title: "Week 7: Consumer Protection & BSA/AML Compliance",
+                outcomes: [
+                    "Define Unfair, Deceptive, or Abusive Acts or Practices (UDAAP) and its implications.",
+                    "Explain the core principles of Fair Lending laws (e.g., ECOA, FHA).",
+                    "Describe the key components of a Bank Secrecy Act / Anti-Money Laundering (BSA/AML) program.",
+                    "Recognize the purpose of Suspicious Activity Reports (SARs) and Currency Transaction Reports (CTRs).",
+                ],
+                resources: [
+                    { type: 'doc', title: "FDIC: Consumer Compliance Examination Manual - UDAAP", link: "https://www.fdic.gov/regulations/compliance/manual/index.html", range: "Section II - UDAAP", note: "Details regulatory expectations for preventing unfair, deceptive, or abusive practices.", thumb: "fdic_thumb.png" },
+                    { type: 'doc', title: "OCC: Comptroller's Handbook - Fair Lending", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#fairlend", range: "Booklet: Overview and Risk Management", note: "Covers requirements under the Equal Credit Opportunity Act (ECOA) and Fair Housing Act (FHA).", thumb: "occ_thumb.png" },
+                    { type: 'doc', title: "FFIEC: BSA/AML Examination Manual", link: "https://bsaaml.ffiec.gov/manual", range: "Sections: BSA/AML Compliance Program, SAR Reporting", note: "The primary guide for BSA/AML compliance expectations and examination procedures.", thumb: "ffiec_thumb.png" },
+                     { type: 'doc', title: "FinCEN: SAR & CTR Guidance", link: "https://www.fincen.gov/reporting-information", range: "Sections on SAR/CTR Filing", note: "Provides official guidance from the Financial Crimes Enforcement Network on required reporting.", thumb: "fincen_thumb.png" },
+                    { type: 'course', title: "ABA: BSA/AML Compliance Fundamentals (Certificate Overview)", link: "https://www.aba.com/training-events/online-training/bsa-aml-compliance-certificate", range: "Course Modules", note: "Highlights key elements covered in industry-standard BSA/AML training.", thumb: "aba_thumb.png" }
+                ],
+                 quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: UDAAP stands for:", o: ["Unusual Depository Activity and Practices", "Unfair, Deceptive, or Abusive Acts or Practices", "Underwriting Decision Accuracy Procedures", "Universal Digital Asset Platform"], a: 1, d: "Easy" },
+                    { q: "Q2: Fair Lending laws prohibit discrimination in credit transactions based on characteristics like race, religion, sex, or:", o: ["Income level", "Credit score", "Receipt of public assistance", "Occupation"], a: 2, d: "Easy" },
+                    { q: "Q3: The Equal Credit Opportunity Act (ECOA) is a key federal law related to:", o: ["Deposit insurance", "Fair Lending", "Cybersecurity", "Capital adequacy"], a: 1, d: "Easy" },
+                    { q: "Q4: BSA/AML regulations are primarily designed to prevent banks from being used for:", o: ["Profitable lending", "Money laundering and terrorist financing", "Marketing research", "Employee training"], a: 1, d: "Easy" },
+                    { q: "Q5: A bank must develop and implement a written BSA/AML __________.", o: ["Marketing plan", "Compliance Program", "Strategic vision", "Loan policy"], a: 1, d: "Easy" },
+                    { q: "Q6: Appointing a qualified BSA Compliance Officer is a required pillar of a BSA/AML program. True or False?", o: ["True", "False"], a: 0, d: "Easy" },
+                    { q: "Q7: Banks must file a __________ for cash transactions exceeding $10,000 conducted by or on behalf of one person in one business day.", o: ["Suspicious Activity Report (SAR)", "Currency Transaction Report (CTR)", "UDAAP Violation Form", "Fair Lending Certificate"], a: 1, d: "Easy" },
+                    { q: "Q8: If a bank detects potentially suspicious activity, such as transactions indicative of money laundering, it must file a:", o: ["Currency Transaction Report (CTR)", "Complaint Form", "Suspicious Activity Report (SAR)", "Marketing Report"], a: 2, d: "Easy" },
+                    { q: "Q9: Providing ongoing BSA/AML training for appropriate personnel is:", o: ["Optional", "Recommended but not required", "A required pillar of an effective BSA/AML program", "Only for the BSA Officer"], a: 2, d: "Easy" },
+                    { q: "Q10: An 'abusive' act or practice under UDAAP is one that materially interferes with a consumer's ability to understand a term or condition, or:", o: ["Is slightly inconvenient", "Takes unreasonable advantage of a consumer's lack of understanding or vulnerability", "Is required by law", "Is approved by the bank's board"], a: 1, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: The Fair Housing Act (FHA) prohibits discrimination specifically related to:", o: ["Business loans", "Residential real estate-related transactions", "Credit cards", "Auto loans"], a: 1, d: "Medium" },
+                    { q: "Q12: 'Redlining', the illegal practice of refusing to provide financial services to residents of certain geographic areas based on race or ethnicity, violates:", o: ["BSA/AML rules", "Capital requirements", "Fair Lending laws (ECOA/FHA)", "UDAAP rules"], a: 2, d: "Medium" },
+                    { q: "Q13: A key component of a BSA/AML program is Customer Due Diligence (CDD) and, where applicable, Enhanced Due Diligence (EDD) for:", o: ["All customers equally", "Higher-risk customers", "Only business customers", "Only individual customers"], a: 1, d: "Medium" },
+                    { q: "Q14: The Customer Identification Program (CIP), part of BSA/AML, requires banks to verify the identity of:", o: ["Only borrowers", "Only depositors", "Customers opening new accounts", "Only high-net-worth individuals"], a: 2, d: "Medium" },
+                    { q: "Q15: Independent testing (audit) of the BSA/AML program is:", o: ["Done only if problems are suspected", "Performed by the BSA Officer", "A required pillar to assess program adequacy", "Conducted by FinCEN"], a: 2, d: "Medium" },
+                    { q: "Q16: SARs must generally be filed with which agency?", o: ["FDIC", "OCC", "Federal Reserve", "FinCEN (Financial Crimes Enforcement Network)"], a: 3, d: "Medium" },
+                    { q: "Q17: Disclosing to a customer that a SAR has been filed on them is:", o: ["Required by law", "Permitted if the customer asks", "Generally prohibited ('tipping off')", "At the bank's discretion"], a: 2, d: "Medium" },
+                    { q: "Q18: A practice can be deemed 'unfair' under UDAAP if it causes or is likely to cause substantial injury, which is not reasonably avoidable, and:", o: ["Benefits the customer", "Is required by regulation", "Is not outweighed by countervailing benefits to consumers or competition", "Is common industry practice"], a: 2, d: "Medium" },
+                    { q: "Q19: Analyzing lending data for potential disparities among different demographic groups is a common practice in:", o: ["BSA/AML monitoring", "Fair Lending compliance monitoring", "Capital stress testing", "Liquidity management"], a: 1, d: "Medium" },
+                    { q: "Q20: The Office of Foreign Assets Control (OFAC) requires banks to block transactions and freeze assets of entities/individuals on:", o: ["The bank's internal watch list", "The Specially Designated Nationals (SDN) list", "A list of preferred customers", "The CTR exemption list"], a: 1, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: Beneficial Ownership rules require banks, under the CDD requirements, to identify and verify the identity of:", o: ["All employees of a business customer", "Individuals who ultimately own or control a legal entity customer (above certain thresholds)", "Anyone who uses the company's products", "The company's primary vendors"], a: 1, d: "Hard" },
+                    { q: "Q22: A 'deceptive' act or practice under UDAAP involves a representation, omission, or practice that is likely to _________ a consumer acting reasonably under the circumstances.", o: ["Slightly annoy", "Inform", "Mislead", "Benefit"], a: 2, d: "Hard" },
+                    { q: "Q23: Which regulatory body has primary rulemaking authority for UDAAP concerning banks with over $10 billion in assets?", o: ["FDIC", "OCC", "Federal Reserve", "Consumer Financial Protection Bureau (CFPB)"], a: 3, d: "Hard" },
+                    { q: "Q24: Structuring cash transactions (e.g., making multiple deposits just under $10,000) to avoid triggering a CTR filing is:", o: ["A legal way to manage cash", "A suspicious activity that may warrant a SAR filing", "Standard practice for businesses", "Only concerning if it involves foreign currency"], a: 1, d: "Hard" },
+                    { q: "Q25: Using disparate impact theory in Fair Lending analysis means evaluating whether a seemingly neutral policy:", o: ["Treats everyone exactly the same", "Has a disproportionately negative effect on a protected group, even without discriminatory intent", "Is intentionally discriminatory", "Is required by BSA regulations"], a: 1, d: "Hard" }
+                 ]
+            },
+             // Week 8: Innovation, Technology & Future Trends
+            {
+                title: "Week 8: Operations, Technology, Innovation & Future Trends",
+                outcomes: [
+                    "Recognize the importance of cybersecurity hygiene and controls (FFIEC IT Handbook).",
+                    "Describe the concept of Third-Party Risk Management (TPRM) related to fintech partnerships.",
+                    "Identify trends in digital banking channels (online, mobile).",
+                    "Understand the need for banks to innovate and adapt to the evolving financial landscape.",
+                ],
+                resources: [
+                    { type: 'doc', title: "FFIEC: IT Examination Handbook - Cybersecurity", link: "https://ithandbook.ffiec.gov/it-booklets/information-security.aspx", range: "Sections: Risk Assessment, Controls", note: "Outlines expectations for managing cybersecurity risks, a critical operational concern.", thumb: "ffiec_thumb.png" },
+                    { type: 'doc', title: "OCC: Comptroller's Handbook - Third-Party Relationships", link: "https://www.occ.gov/news-issuances/comptrollers-handbook/index-comptrollers-handbook.html#tpr", range: "Booklet: Risk Management Guidance", note: "Details regulatory expectations for managing risks when outsourcing or partnering with third parties, including fintechs.", thumb: "occ_thumb.png" },
+                    { type: 'doc', title: "FDIC: Risk Management Manual - Section 10.1 Technology Risk Management", link: "https://www.fdic.gov/regulations/safety-soundness/manual/section10-1.pdf", range: "Pages 1-10", note: "Covers the FDIC's perspective on managing technology and operational risks.", thumb: "fdic_thumb.png" },
+                    { type: 'course', title: "Coursera: FinTech: Foundations & Applications (Wharton)", link: "https://www.coursera.org/learn/fintechfoundationsapplications", range: "Week 4: Digital Transformation & Future", note: "Explores how technology is reshaping banking services and operations.", thumb: "coursera_thumb.png" },
+                    { type: 'doc', title: "ABA: Banking Journal - Technology & Innovation Articles", link: "https://bankingjournal.aba.com/category/technology-innovation/", range: "Recent Articles", note: "Provides industry perspectives on current trends in digital banking, AI, and fintech partnerships.", thumb: "aba_thumb.png" }
+                ],
+                 quiz: [
+                    // Easy (1-10)
+                    { q: "Q1: The FFIEC provides guidance to financial institutions on managing risks related to information technology and:", o: ["Interest rates", "Credit quality", "Cybersecurity", "Marketing"], a: 2, d: "Easy" },
+                    { q: "Q2: Protecting sensitive customer data from breaches is a key objective of bank:", o: ["Marketing", "Cybersecurity programs", "Lending policies", "Branch design"], a: 1, d: "Easy" },
+                    { q: "Q3: When a bank uses an external company (a third party) for services like core processing or digital platform development, it must manage:", o: ["Only its own internal risks", "Third-Party Risk", "Only credit risk", "Only market risk"], a: 1, d: "Easy" },
+                    { q: "Q4: Due diligence before entering a third-party relationship involves assessing the vendor's:", o: ["Marketing slogans", "Financial condition, security posture, and operational capabilities", "Number of employees", "Office location"], a: 1, d: "Easy" },
+                    { q: "Q5: Mobile banking apps and online banking websites are examples of:", o: ["Physical branches", "Digital banking channels", "Regulatory agencies", "Core banking systems"], a: 1, d: "Easy" },
+                    { q: "Q6: Offering services like mobile check deposit and P2P payments enhances customer:", o: ["Risk exposure", "Convenience and experience", "Regulatory burden", "Capital requirements"], a: 1, d: "Easy" },
+                    { q: "Q7: Financial Technology companies, often called __________, frequently partner with banks or compete with them.", o: ["Regulators", "Fintechs", "Auditors", "Credit Bureaus"], a: 1, d: "Easy" },
+                    { q: "Q8: Banks need to innovate to:", o: ["Increase regulation", "Meet evolving customer expectations and remain competitive", "Reduce capital", "Eliminate branches"], a: 1, d: "Easy" },
+                    { q: "Q9: Strong cybersecurity controls include things like firewalls, intrusion detection systems, and:", o: ["Open Wi-Fi networks", "Employee awareness training", "Sharing passwords", "Using default credentials"], a: 1, d: "Easy" },
+                    { q: "Q10: Third-Party Risk Management (TPRM) is important because a failure at a critical vendor can:", o: ["Benefit the bank", "Directly impact the bank's operations and reputation", "Lower the bank's costs", "Increase the bank's capital"], a: 1, d: "Easy" },
+                    // Medium (11-20)
+                    { q: "Q11: The FFIEC Cybersecurity Assessment Tool (CAT) helps institutions evaluate their:", o: ["Loan portfolio quality", "Cybersecurity preparedness and maturity level", "Marketing campaign success", "Employee satisfaction"], a: 1, d: "Medium" },
+                    { q: "Q12: Incident Response Planning is a critical part of cybersecurity, outlining how the bank will:", o: ["Prevent all incidents", "Respond to and recover from security breaches or cyberattacks", "Market new products", "Set interest rates"], a: 1, d: "Medium" },
+                    { q: "Q13: Regulatory guidance on TPRM emphasizes that the bank's board and management remain ultimately responsible for:", o: ["The vendor's profitability", "Managing the risks associated with third-party relationships", "Developing the vendor's software", "The vendor's hiring decisions"], a: 1, d: "Medium" },
+                    { q: "Q14: Fintech partnerships can help traditional banks:", o: ["Avoid all regulations", "Access new technologies and capabilities more quickly", "Reduce their customer base", "Increase operational complexity unnecessarily"], a: 1, d: "Medium" },
+                    { q: "Q15: 'Banking as a Service' (BaaS) involves banks providing:", o: ["Basic checking accounts only", "Their banking infrastructure and licenses via APIs for fintechs to build upon", "Consulting services to other banks", "Physical security for branches"], a: 1, d: "Medium" },
+                    { q: "Q16: User Experience (UX) design is increasingly important for:", o: ["Calculating capital ratios", "Designing effective and easy-to-use digital banking channels", "Underwriting commercial loans", "Conducting BSA audits"], a: 1, d: "Medium" },
+                    { q: "Q17: Concerns about data privacy and security are heightened with the increased use of:", o: ["Traditional paper checks", "Digital channels and data sharing with third parties", "Safe deposit boxes", "Teller windows"], a: 1, d: "Medium" },
+                    { q: "Q18: The 'Future of Banking' is likely to involve more personalization, automation (AI/ML), and:", o: ["Fewer digital options", "Seamless integration across channels (omnichannel)", "Higher reliance on physical branches", "Less focus on customer needs"], a: 1, d: "Medium" },
+                    { q: "Q19: Ongoing monitoring is a key part of the TPRM lifecycle, occurring:", o: ["Only during initial due diligence", "Throughout the duration of the third-party relationship", "Only if a problem occurs", "Annually, regardless of risk"], a: 1, d: "Medium" },
+                    { q: "Q20: Implementing robust authentication methods for digital channels helps prevent:", o: ["Customers from accessing their accounts", "Unauthorized account access and fraud", "Interest rate fluctuations", "Credit losses"], a: 1, d: "Medium" },
+                    // Hard (21-25)
+                    { q: "Q21: Cloud computing presents opportunities for banks but also requires careful risk management, particularly regarding data security, resiliency, and:", o: ["Physical server maintenance", "Regulatory compliance and vendor lock-in", "Marketing budget allocation", "Branch location strategy"], a: 1, d: "Hard" },
+                    { q: "Q22: Managing concentration risk within third-party relationships (e.g., over-reliance on a single critical vendor) is an important aspect of:", o: ["Credit risk management", "Market risk management", "TPRM", "Capital planning"], a: 2, d: "Hard" },
+                    { q: "Q23: Application Programming Interfaces (APIs) are crucial for enabling:", o: ["Legacy mainframe operations", "Connectivity and data sharing between different systems, facilitating fintech integration and open banking", "Manual data entry", "Physical check sorting"], a: 1, d: "Hard" },
+                    { q: "Q24: Evaluating the cybersecurity posture of a potential fintech partner (or any critical vendor) during due diligence should include reviewing their:", o: ["Marketing materials", "Independent security audits (e.g., SOC reports), penetration testing results, and incident response plans", "Employee headcount", "Office decor"], a: 1, d: "Hard" },
+                    { q: "Q25: The concept of 'digital transformation' in banking goes beyond just offering mobile apps; it involves fundamentally rethinking:", o: ["How to maintain existing processes", "Business models, customer engagement, and operational efficiency using technology", "Traditional marketing methods only", "How to increase branch traffic"], a: 1, d: "Hard" }
+                 ]
+            }
+        ];
+
+        const courseAbstract = "BankOps Academy offers a practical guide to running a U.S. bank through 8 sequential modules. Focusing on the Four Pillars—Governance & Corporate Strategy, Risk & Regulatory Compliance, Financial & Balance-Sheet Management, and Operations, Technology & Innovation—this course equips learners with core competencies essential for navigating the complex banking landscape. Using primary regulatory sources and expert insights, participants will understand board duties, CAMELS ratings, risk management (credit, liquidity, BSA/AML), ALM, core operations, cybersecurity, and the impact of fintech. Each week features curated resources and quizzes to solidify knowledge, preparing aspiring and current professionals for effective bank management in a dynamic environment.";
+        
+        // --- DOM Elements ---
+        const sidebarNav = document.getElementById('sidebar-nav').querySelector('ul');
+        const weekTitleEl = document.getElementById('week-title');
+        const learningOutcomesListEl = document.getElementById('learning-outcomes').querySelector('ul');
+        const lessonsContentEl = document.getElementById('lessons-content').querySelector('.resource-grid');
+        const quizContentEl = document.getElementById('quiz-content');
+        const quizFormEl = document.getElementById('quiz-form');
+        const quizResultEl = document.getElementById('quiz-result');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const submitQuizBtn = document.getElementById('submit-quiz'); // Get reference here
+
+        let currentWeekIndex = 0;
+
+        // --- Functions ---
+
+        function createThumbnailSrc(baseName) {
+            // In a real scenario, these would be actual image paths or dynamically generated.
+            // Using placeholder data URIs for self-contained example.
+            const placeholders = {
+                 "fdic_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3EFDIC%3C/text%3E%3C/svg%3E",
+                 "occ_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3EOCC%3C/text%3E%3C/svg%3E",
+                 "fed_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3EFed%3C/text%3E%3C/svg%3E",
+                 "aba_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3EABA%3C/text%3E%3C/svg%3E",
+                 "ffiec_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3EFFIEC%3C/text%3E%3C/svg%3E",
+                  "fincen_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3EFinCEN%3C/text%3E%3C/svg%3E",
+                 "coursera_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3ECoursera%3C/text%3E%3C/svg%3E",
+                  "khan_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3EKhan%3C/text%3E%3C/svg%3E",
+                  "trainingcred_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3ETraining%3C/text%3E%3C/svg%3E",
+                   "nacha_thumb.png": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e9ecef'/%3E%3Ctext x='50' y='55' font-size='12' text-anchor='middle' fill='%236c757d'%3ENACHA%3C/text%3E%3C/svg%3E",
+                 // Add more as needed
+             };
+             return placeholders[baseName] || placeholders["fdic_thumb.png"]; // Default fallback
+        }
+
+
+        function renderSidebar() {
+            sidebarNav.innerHTML = ''; // Clear existing buttons
+            courseData.forEach((week, index) => {
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                const img = document.createElement('img');
+                img.src = createThumbnailSrc(week.resources[0]?.thumb || 'fdic_thumb.png'); // Use first resource thumb or default
+                img.alt = `Week ${index + 1} thumbnail`;
+
+                button.appendChild(img);
+                const textNode = document.createTextNode(`Week ${index + 1}`);
+                button.appendChild(textNode);
+
+                button.dataset.week = index; // Store week index
+                if (index === currentWeekIndex) {
+                    button.classList.add('active');
+                }
+                
+                // Add event listener
+                button.addEventListener('click', handleSidebarClick);
+
+                li.appendChild(button);
+                sidebarNav.appendChild(li);
+            });
+        }
+
+        function handleSidebarClick(event) {
+             // Use event.currentTarget to ensure we get the button, even if img is clicked
+            const button = event.currentTarget; 
+            const weekIndex = parseInt(button.dataset.week);
+            loadWeek(weekIndex);
+            
+            // Update active state
+            document.querySelectorAll('#sidebar-nav button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Reset to lessons tab
+            switchTab('lessons-content');
+            document.querySelectorAll('.tab-button').forEach(tb => tb.classList.remove('active'));
+            document.querySelector('.tab-button[data-tab="lessons-content"]').classList.add('active');
+
+        }
+
+        function renderLessons(weekIndex) {
+            const week = courseData[weekIndex];
+            lessonsContentEl.innerHTML = ''; // Clear previous lessons
+
+            week.resources.forEach(resource => {
+                const card = document.createElement('div');
+                card.classList.add('resource-card');
+
+                const img = document.createElement('img');
+                img.src = createThumbnailSrc(resource.thumb);
+                img.alt = `${resource.title} thumbnail`;
+                
+                const title = document.createElement('h3');
+                title.textContent = resource.title;
+
+                const note = document.createElement('p');
+                note.textContent = resource.note;
+
+                const details = document.createElement('p');
+                details.classList.add('details');
+                details.textContent = `Reference: ${resource.range}`;
+
+                const link = document.createElement('a');
+                link.href = resource.link;
+                link.textContent = 'Go to Resource';
+                link.target = '_blank'; // Open in new tab
+                link.rel = 'noopener noreferrer'; // Security best practice
+
+                card.appendChild(img);
+                card.appendChild(title);
+                card.appendChild(note);
+                card.appendChild(details);
+                card.appendChild(link);
+
+                lessonsContentEl.appendChild(card);
+            });
+        }
+        
+        function renderQuiz(weekIndex) {
+            const week = courseData[weekIndex];
+             // Clear previous quiz content *except* the submit button
+            quizFormEl.innerHTML = ''; // Clear previous questions/options
+            
+            week.quiz.forEach((item, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('quiz-question');
+
+                const questionText = document.createElement('p');
+                questionText.textContent = `${item.q}`; 
+                const difficultySpan = document.createElement('span');
+                difficultySpan.classList.add('difficulty');
+                difficultySpan.textContent = `(${item.d})`;
+                questionText.appendChild(difficultySpan);
+
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.classList.add('quiz-options');
+
+                item.o.forEach((option, optionIndex) => {
+                    const label = document.createElement('label');
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = `q${index}`;
+                    radio.value = optionIndex; 
+                    radio.required = true; // Make selection required
+
+                    label.appendChild(radio);
+                    label.appendChild(document.createTextNode(` ${option}`));
+                    optionsDiv.appendChild(label);
+                });
+
+                questionDiv.appendChild(questionText);
+                questionDiv.appendChild(optionsDiv);
+                quizFormEl.appendChild(questionDiv);
+            });
+            
+             // Re-append the submit button (or create if needed)
+             const submitButton = document.createElement('button');
+             submitButton.type = 'submit';
+             submitButton.id = 'submit-quiz';
+             submitButton.textContent = 'Submit Quiz';
+             quizFormEl.appendChild(submitButton); // Append to the form
+
+            quizResultEl.style.display = 'none'; // Hide previous results
+            quizResultEl.className = ''; // Clear result classes
+            
+             // Remove old listener if exists (important!) and add new one
+             quizFormEl.removeEventListener('submit', handleQuizSubmit); // Remove previous listener tied to old index
+             quizFormEl.addEventListener('submit', handleQuizSubmit); // Add listener for current week
+        }
+
+
+        function handleQuizSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            const week = courseData[currentWeekIndex];
+            let score = 0;
+            const totalQuestions = week.quiz.length;
+            
+            week.quiz.forEach((item, index) => {
+                const selectedOption = quizFormEl.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedOption && parseInt(selectedOption.value) === item.a) {
+                    score++;
+                }
+            });
+
+            const percentage = (score / totalQuestions) * 100;
+            const passed = percentage >= 80;
+
+            quizResultEl.textContent = `Result: ${score} out of ${totalQuestions} (${percentage.toFixed(1)}%). ${passed ? 'Status: Pass' : 'Status: Fail (Requires 80%)'}`;
+            quizResultEl.classList.add(passed ? 'pass' : 'fail');
+            quizResultEl.style.display = 'block';
+            
+            // Scroll to results
+            quizResultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        }
+
+        function switchTab(targetTabId) {
+             tabContents.forEach(content => {
+                 content.style.display = 'none'; // Hide all first
+                 content.classList.remove('active');
+             });
+             const targetContent = document.getElementById(targetTabId);
+             if (targetContent) {
+                  targetContent.style.display = 'block'; // Show the target
+                  targetContent.classList.add('active');
+             }
+        }
+
+        function loadWeek(weekIndex) {
+            currentWeekIndex = weekIndex;
+            const week = courseData[weekIndex];
+
+            // Update titles and outcomes
+            weekTitleEl.textContent = week.title;
+            learningOutcomesListEl.innerHTML = ''; // Clear previous
+             week.outcomes.forEach(outcome => {
+                 const li = document.createElement('li');
+                 li.textContent = outcome;
+                 learningOutcomesListEl.appendChild(li);
+             });
+
+
+            // Render content
+            renderLessons(weekIndex);
+            renderQuiz(weekIndex); // Render quiz structure (questions added dynamically)
+        }
+
+        // --- Initialization ---
+        renderSidebar();
+        loadWeek(currentWeekIndex); // Load initial week
+
+        // Add Tab Button Listeners
+         tabButtons.forEach(button => {
+             button.addEventListener('click', () => {
+                 // Update button active state
+                 tabButtons.forEach(btn => btn.classList.remove('active'));
+                 button.classList.add('active');
+                 
+                 // Switch content
+                 const targetTabId = button.dataset.tab;
+                 switchTab(targetTabId);
+             });
+         });
+         
+         // Log abstract to console (optional - useful for verification)
+         // console.log("Course Abstract:", courseAbstract);
+
+    </script>
+</body>
+</html>
