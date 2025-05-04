@@ -268,7 +268,7 @@
         }
 
         .difficulty-Easy { background-color: var(--quiz-easy); color: #155724; }
-        .difficulty-Medium { background-color: var(--quiz-medium); color: #856404; }
+        .difficulty-Medium { background-color: var(--quiz-medium); color: #fff3cd; }
         .difficulty-Hard { background-color: var(--quiz-hard); color: #721c24; }
 
         #quiz-submit-button {
@@ -457,7 +457,7 @@
         const courseData = {
             metadata: {
                 title: "BankOps Academy – A Practical Guide to Running a U.S. Bank",
-                abstract: "Navigate the complexities of U.S. bank operations with this practical guide. Covering Governance & Corporate Strategy, Risk & Regulatory Compliance, Financial & Balance-Sheet Management, and Operations, Technology & Innovation, this course provides essential knowledge for aspiring and current bank professionals. Delve into regulatory frameworks, risk management techniques, financial strategies, and operational best practices to build a solid foundation in bank management. Ideal for those seeking to understand the intricate workings of the U.S. banking system.",
+                abstract: "Navigate the complexities of U.S. bank operations with this practical guide. Covering Governance & Corporate Strategy, Risk & Regulatory Compliance, Financial & Balance-Sheet Management, and Operations, Technology & Innovation, this course provides essential knowledge for aspiring and current bank professionals. Delve into regulatory frameworks, risk management techniques, financial strategies, and operational best practices to build a solid foundation in bank management.",
                 targetAudience: "This course is designed for individuals seeking to understand the core functions and regulatory environment of U.S. banks. It is suitable for aspiring bank employees, current staff looking to broaden their knowledge, compliance officers, risk managers, finance professionals, and anyone interested in the practical aspects of banking operations.",
                 takeaways: [
                     "Understand the key regulatory bodies and frameworks governing U.S. banks.",
@@ -467,9 +467,234 @@
                     "Explore the role of technology and innovation in modern banking.",
                     "Develop a holistic perspective on running a safe and sound financial institution."
                 ],
-                lessonPlanIntro: "The course is structured into 8 weekly modules, each focusing on key areas within the Four Pillars of bank operations. Each week includes curated learning resources and a quiz to test your understanding."
+                lessonPlanIntro: "The course is structured into 11 modules, starting with an overview of the U.S. banking system and its regulators, followed by 10 weekly modules focusing on key areas within the Four Pillars of bank operations and core financial concepts. Each module includes curated learning resources and a quiz to test your understanding."
             },
             weeks: [
+                 {
+                    title: "Overview of the U.S. Banking System & Regulators",
+                    outcomes: [
+                        "Describe the structure of the U.S. dual banking system.",
+                        "Identify the primary federal banking regulatory agencies (Federal Reserve, FDIC, OCC, NCUA, CFPB).",
+                        "Explain the main responsibilities of each federal regulator.",
+                        "Understand the role of state banking regulators.",
+                        "Differentiate between key types of financial institutions (commercial banks, savings institutions, credit unions, investment banks)."
+                    ],
+                    resources: [
+                         {
+                            type: "Reading",
+                            title: "What Agencies Oversee U.S. Financial Institutions?",
+                            source: "Investopedia",
+                            link: "https://www.investopedia.com/ask/answers/063015/what-are-some-major-regulatory-agencies-responsible-overseeing-financial-institutions-us.asp",
+                            pageRange: "All sections",
+                            estimatedTime: "20 min",
+                            whyMatters: "Provides a clear overview of the key federal regulatory agencies and their roles in overseeing U.S. financial institutions."
+                        },
+                         {
+                            type: "Reading",
+                            title: "Dual Banking System: Meaning, History, Pros and Cons",
+                            source: "Investopedia",
+                            link: "https://www.investopedia.com/terms/d/dual-banking-system.asp",
+                            pageRange: "All sections",
+                            estimatedTime: "15 min",
+                            whyMatters: "Explains the concept of the dual banking system in the U.S., where banks can be chartered at both federal and state levels."
+                        },
+                         {
+                            type: "Reading",
+                            title: "Types of Banks: Commercial vs. Investment",
+                            source: "Britannica Money",
+                            link: "https://www.britannica.com/money/types-of-banks",
+                            pageRange: "All sections",
+                            estimatedTime: "15 min",
+                            whyMatters: "Differentiates between commercial and investment banks and mentions other types of financial institutions."
+                        },
+                         {
+                            type: "Reading",
+                            title: "About NCUA",
+                            source: "NCUA.gov",
+                            link: "https://ncua.gov/about",
+                            pageRange: "All sections",
+                            estimatedTime: "10 min",
+                            whyMatters: "Provides information about the National Credit Union Administration and its role in regulating credit unions."
+                        }
+                    ],
+                    quiz: [
+                         {
+                            question: "Q1: The U.S. banking system is described as 'dual' because:",
+                            options: ["It has both large and small banks", "Banks can be chartered by either the federal or state government", "It regulates both banks and credit unions", "It uses both physical and digital currency"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "Think about the chartering authority for banks in the U.S."
+                        },
+                        {
+                            question: "Q2: Which federal agency is the primary regulator for national banks?",
+                            options: ["FDIC", "Federal Reserve", "OCC", "CFPB"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "This agency is part of the U.S. Department of the Treasury and charters national banks."
+                        },
+                        {
+                            question: "Q3: The Federal Reserve System is responsible for:",
+                            options: ["Insuring bank deposits", "Chartering state banks", "Conducting monetary policy and supervising certain financial institutions", "Regulating the stock market exclusively"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "The Fed is the central bank of the U.S."
+                        },
+                         {
+                            question: "Q4: The Federal Deposit Insurance Corporation (FDIC) primarily focuses on:",
+                            options: ["Lending to large corporations", "Providing deposit insurance and supervising certain banks", "Managing the national debt", "Regulating interest rates"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "Think about what the 'I' in FDIC stands for."
+                        },
+                         {
+                            question: "Q5: Credit unions are different from commercial banks primarily because they are:",
+                            options: ["Owned by shareholders", "For-profit organizations", "Nonprofit financial cooperatives owned by their members", "Regulated only by state governments"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "Consider the ownership structure of credit unions."
+                        },
+                        {
+                            question: "Q6: Which agency is the primary federal regulator for federally chartered credit unions?",
+                            options: ["FDIC", "NCUA", "OCC", "Federal Reserve"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "This agency was specifically created to regulate credit unions."
+                        },
+                        {
+                            question: "Q7: The Consumer Financial Protection Bureau (CFPB) has supervisory authority over:",
+                            options: ["Only the largest national banks", "Only state-chartered credit unions", "Banks, thrifts, and credit unions with assets over $10 billion, among other financial service providers", "Only investment banks"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "The CFPB's focus is on consumer protection across a range of financial institutions."
+                        },
+                        {
+                            question: "Q8: State banking regulators are responsible for:",
+                            options: ["Chartering and supervising national banks", "Conducting U.S. monetary policy", "Chartering and supervising state-chartered financial institutions", "Insuring deposits at all U.S. banks"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "In the dual banking system, states have their own regulatory authority."
+                        },
+                         {
+                            question: "Q9: An investment bank primarily engages in activities such as:",
+                            options: ["Taking deposits and making consumer loans", "Providing deposit insurance", "Underwriting securities, M&A advisory, and trading", "Regulating credit unions"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "Investment banks operate in the capital markets."
+                        },
+                        {
+                            question: "Q10: Under the dual banking system, a state-chartered bank that is NOT a member of the Federal Reserve System is primarily supervised for safety and soundness by:",
+                            options: ["The OCC", "The Federal Reserve", "The FDIC and the state banking department", "The CFPB"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "Non-member state banks have a different primary federal regulator than national banks or state member banks."
+                        },
+                         {
+                            question: "Q11: The relationship between federal and state banking regulators in the U.S. can be described as:",
+                            options: ["Completely separate with no overlap", "One where federal regulators have sole authority", "One involving shared responsibility and cooperation, particularly for state-chartered institutions", "One where state regulators have sole authority"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "The dual banking system involves interaction and shared oversight."
+                        },
+                         {
+                            question: "Q12: Which type of financial institution is owned by its customers?",
+                            options: ["Commercial Bank", "Investment Bank", "Credit Union", "National Bank"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "This is a key characteristic of credit unions."
+                        },
+                         {
+                            question: "Q13: The primary federal regulator for a national bank is the OCC. If that national bank is part of a bank holding company, the holding company is supervised by:",
+                            options: ["The FDIC", "The OCC", "The Federal Reserve", "The state banking department"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "The Federal Reserve has broad authority over bank holding companies."
+                        },
+                         {
+                            question: "Q14: Mercantile banks, historically, were primarily involved in financing trade. In the modern U.S. system, activities similar to historical mercantile banking are often conducted by:",
+                            options: ["Credit Unions", "Savings and Loan Associations", "Investment Banks and commercial banks with specialized divisions", "The NCUA"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "Think about which modern institutions facilitate complex financial transactions and trade finance."
+                        },
+                         {
+                            question: "Q15: The primary goal of the U.S. banking regulatory structure is to:",
+                            options: ["Maximize bank profits", "Ensure a safe, sound, and stable financial system and protect consumers", "Minimize the number of banks", "Fund government operations"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "Regulation aims to protect the system and its users."
+                        },
+                         {
+                            question: "Q16: If a state-chartered bank becomes a member of the Federal Reserve System, it is then supervised by:",
+                            options: ["Only the state regulator", "Only the Federal Reserve", "The state regulator and the Federal Reserve", "The OCC"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "Membership in the Fed adds a layer of federal supervision to state-chartered banks."
+                        },
+                         {
+                            question: "Q17: The term 'thrift institution' often refers to:",
+                            options: ["Commercial banks", "Investment banks", "Savings banks and savings and loan associations", "Credit unions only"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "These institutions historically focused on savings and mortgages."
+                        },
+                         {
+                            question: "Q18: Which federal agency is responsible for insuring deposits at most U.S. banks and savings associations?",
+                            options: ["Federal Reserve", "OCC", "NCUA", "FDIC"],
+                            correctAnswerIndex: 3,
+                            difficulty: "Easy",
+                            hint: "This agency's name includes 'Deposit Insurance'."
+                        },
+                         {
+                            question: "Q19: The Dodd-Frank Act of 2010 significantly impacted the U.S. regulatory structure, including the creation of the:",
+                            options: ["Federal Reserve", "OCC", "CFPB", "FDIC"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "This agency was established to enhance consumer protection."
+                        },
+                         {
+                            question: "Q20: While state banking regulators supervise state-chartered banks, these banks must also comply with applicable federal laws and regulations. This demonstrates the concept of:",
+                            options: ["Siloed regulation", "Exclusive state authority", "Concurrent regulation", "Federal preemption (in all cases)"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "Many state-chartered banks are subject to oversight from both state and federal authorities."
+                        },
+                         {
+                            question: "Q21: The primary difference in regulatory oversight between a federally chartered credit union and a state-chartered credit union is:",
+                            options: ["Federally chartered are regulated by FDIC, state by NCUA", "Federally chartered are regulated by NCUA, state by NCUA and/or state regulator", "Federally chartered are regulated by OCC, state by state regulator", "There is no difference in regulation"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "NCUA regulates all federal credit unions and insures state-chartered ones, which also have state oversight."
+                        },
+                         {
+                            question: "Q22: If a large financial institution engages in activities across commercial banking, investment banking, and insurance, it is often referred to as a:",
+                            options: ["Credit Union", "Community Bank", "Universal Bank or Financial Holding Company", "Savings Bank"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "These entities offer a wide range of financial services."
+                        },
+                         {
+                            question: "Q23: The Volcker Rule, implemented after the 2008 financial crisis, primarily aimed to restrict:",
+                            options: ["Consumer lending by banks", "Proprietary trading by banks and their affiliations with hedge funds/private equity", "The number of bank branches", "Credit union membership"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "This rule targeted certain risky activities within large banking organizations."
+                        },
+                         {
+                            question: "Q24: Which of the following entities is NOT a direct prudential regulator for depository institutions (banks and credit unions) in the U.S.?",
+                            options: ["Federal Reserve", "SEC", "FDIC", "OCC"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Prudential regulators focus on the safety and soundness of the institution itself. One of these focuses on securities markets."
+                        },
+                         {
+                            question: "Q25: The Conference of State Bank Supervisors (CSBS) is an organization that represents:",
+                            options: ["Federal banking regulators", "The largest national banks", "State banking regulators", "Credit union executives"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "The name of the organization is a strong clue."
+                        }
+                    ]
+                },
                 {
                     title: "Introduction to U.S. Banking & Governance Fundamentals",
                     outcomes: [
@@ -483,7 +708,7 @@
                             type: "Reading",
                             title: "FDIC Risk Management Manual of Examination Policies: Section 1.1 - Board of Directors, Management, and Ownership",
                             source: "FDIC",
-                            link: "https://www.fdic.gov/regulations/safety/manual/section1-1.pdf",
+                            link: "https://www.fdic.gov/resources/supervision-and-examinations/examination-policies-manual/section1-1.pdf",
                             pageRange: "Pages 1-15",
                             estimatedTime: "60 min",
                             whyMatters: "This foundational document outlines the FDIC's expectations for bank governance, emphasizing the critical role of the board and senior management in ensuring safety and soundness."
@@ -492,7 +717,7 @@
                             type: "Reading",
                             title: "OCC Comptroller's Handbook: Bank Charters",
                             source: "OCC",
-                            link: "https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/bank-charters/pub-ch-bank-charters.pdf",
+                            link: "https://www.occ.gov/publications/publications-by-type/licensing-manuals/charters.pdf",
                             pageRange: "Pages 1-10",
                             estimatedTime: "45 min",
                             whyMatters: "Provides an overview of the national bank chartering process and the responsibilities associated with operating under an OCC charter."
@@ -501,183 +726,183 @@
                             type: "Video",
                             title: "CAMELS Rating System Explained",
                             source: "Youtube (Federal Reserve Bank of St. Louis)",
-                            link: "https://www.youtube.com/watch?v=00000000000", // Placeholder - Replace with actual relevant video link
-                            pageRange: "0:00 - 8:30", // Example time stamp
+                            link: "https://www.youtube.com/watch?v=", // Placeholder - Replace with actual relevant video link
+                            pageRange: "0:00 - 8:30",
                             estimatedTime: "10 min",
                             whyMatters: "A concise explanation of how regulators assess a bank's overall condition, focusing on the key factors including Management (M)."
                         }
                     ],
                     quiz: [
                          {
-                            question: "Q1: Which of the following is NOT one of the primary federal regulatory bodies for U.S. banks?",
+                            question: "Q26: Which of the following is NOT one of the primary federal regulatory bodies for U.S. banks?",
                             options: ["Federal Reserve", "FDIC", "SEC", "OCC"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "Think about the agencies specifically focused on banking supervision and deposit insurance."
                         },
                         {
-                            question: "Q2: A bank chartered by the Office of the Comptroller of the Currency (OCC) is known as what type of bank?",
+                            question: "Q27: A bank chartered by the Office of the Comptroller of the Currency (OCC) is known as what type of bank?",
                             options: ["State bank", "National bank", "Savings bank", "Credit union"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The OCC is part of the U.S. Department of the Treasury and supervises a specific type of bank."
                         },
                         {
-                            question: "Q3: The 'M' in the CAMELS rating system stands for:",
+                            question: "Q28: The 'M' in the CAMELS rating system stands for:",
                             options: ["Market Sensitivity", "Management", "Money Laundering", "Mortgage Quality"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "This component assesses the board and senior executives."
                         },
                          {
-                            question: "Q4: Which entity is primarily responsible for setting the strategic direction and overall risk appetite of a bank?",
+                            question: "Q29: Which entity is primarily responsible for setting the strategic direction and overall risk appetite of a bank?",
                             options: ["Senior Management", "The Board of Directors", "Internal Audit", "The Compliance Department"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Think about the highest level of authority and oversight within the bank."
                         },
                          {
-                            question: "Q5: The FDIC's role includes providing deposit insurance and:",
+                            question: "Q30: The FDIC's role includes providing deposit insurance and:",
                             options: ["Chartering national banks", "Conducting monetary policy", "Supervising state-chartered banks (non-member)", "Regulating the stock market"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "The FDIC has direct supervisory authority over certain types of banks."
                         },
                         {
-                            question: "Q6: Which of the following is a key duty of a bank's board of directors as outlined by the FDIC?",
+                            question: "Q31: Which of the following is a key duty of a bank's board of directors as outlined by the FDIC?",
                             options: ["Managing daily operations", "Hiring all bank staff", "Establishing and overseeing adherence to major policies", "Approving individual loan applications"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "The board focuses on oversight and policy, not day-to-day tasks."
                         },
                         {
-                            question: "Q7: A state-chartered bank that is a member of the Federal Reserve System is also supervised by:",
+                            question: "Q32: A state-chartered bank that is a member of the Federal Reserve System is also supervised by:",
                             options: ["Only the state regulator", "Only the Federal Reserve", "The state regulator and the Federal Reserve", "The state regulator, the Federal Reserve, and the OCC"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Membership in the Federal Reserve adds a layer of federal oversight."
                         },
                         {
-                            question: "Q8: The CAMELS rating is a supervisory tool used by regulators to:",
+                            question: "Q33: The CAMELS rating is a supervisory tool used by regulators to:",
                             options: ["Determine a bank's profitability", "Assess a bank's overall financial and operational health", "Set interest rates for loans", "Approve mergers and acquisitions"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "It's a comprehensive assessment of safety and soundness."
                         },
                          {
-                            question: "Q9: If a bank's 'Management' rating in CAMELS is low, what might this indicate to regulators?",
+                            question: "Q34: If a bank's 'Management' rating in CAMELS is low, what might this indicate to regulators?",
                             options: ["The bank has too much capital", "The board and senior management may lack necessary expertise or oversight", "The bank's assets are high quality", "The bank is highly profitable"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "The Management component directly assesses the quality of leadership."
                         },
                         {
-                            question: "Q10: Enterprise-wide policy setting is a function most closely associated with:",
+                            question: "Q35: Enterprise-wide policy setting is a function most closely associated with:",
                             options: ["Front-line staff", "Mid-level managers", "Internal Audit", "The Board of Directors"],
                             correctAnswerIndex: 3,
                             difficulty: "Medium",
                             hint: "Policies that apply across the entire organization are typically approved at the highest level."
                         },
                         {
-                            question: "Q11: A bank's board is considering a new strategic initiative to enter a complex, high-risk market segment. According to FDIC guidance, what is a critical step the board must take BEFORE approving this initiative?",
+                            question: "Q36: A bank's board is considering a new strategic initiative to enter a complex, high-risk market segment. According to FDIC guidance, what is a critical step the board must take BEFORE approving this initiative?",
                             options: ["Immediately hire new senior executives with experience in that market.", "Ensure management has conducted a thorough risk assessment and developed appropriate controls.", "Publicly announce the initiative to gauge market reaction.", "Seek approval from all bank employees."],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "The board's duty involves understanding and mitigating risks associated with strategic decisions."
                         },
                         {
-                            question: "Q12: Bank A is a state-chartered, non-member bank. Bank B is an OCC-chartered national bank. Bank C is a state-chartered bank that is a member of the Federal Reserve. Which bank(s) are supervised by the FDIC?",
+                            question: "Q37: Bank A is a state-chartered, non-member bank. Bank B is an OCC-chartered national bank. Bank C is a state-chartered bank that is a member of the Federal Reserve. Which bank(s) are supervised by the FDIC?",
                             options: ["Only Bank A", "Only Bank B", "Only Bank C", "Bank A, Bank B, and Bank C"],
                             correctAnswerIndex: 3,
                             difficulty: "Hard",
                             hint: "The FDIC's role in supervision extends broadly across the banking system, tied to deposit insurance."
                         },
                         {
-                            question: "Q13: The CAMELS rating for a bank is a composite score based on six components. If a bank receives a composite rating of '1', what does this generally signify?",
+                            question: "Q38: The CAMELS rating for a bank is a composite score based on six components. If a bank receives a composite rating of '1', what does this generally signify?",
                             options: ["The bank is experiencing significant financial difficulties.", "The bank is in fundamentally sound condition and presents a low supervisory concern.", "The bank requires immediate regulatory intervention.", "The bank's management needs replacement."],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "A '1' rating is the highest possible score in the CAMELS system."
                         },
                          {
-                            question: "Q14: If a bank's board fails to establish clear lines of authority and responsibility within the bank, which component of the CAMELS rating is most likely to be negatively impacted?",
+                            question: "Q39: If a bank's board fails to establish clear lines of authority and responsibility within the bank, which component of the CAMELS rating is most likely to be negatively impacted?",
                             options: ["Capital Adequacy", "Asset Quality", "Management", "Earnings"],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "This relates directly to the structure and effectiveness of the bank's leadership and operations."
                         },
                          {
-                            question: "Q15: A bank is considering converting its state charter to a national charter. Which federal regulator would be the primary authority for approving this conversion?",
+                            question: "Q40: A bank is considering converting its state charter to a national charter. Which federal regulator would be the primary authority for approving this conversion?",
                             options: ["Federal Reserve", "FDIC", "OCC", "Consumer Financial Protection Bureau (CFPB)"],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "Think about which regulator is responsible for national bank charters."
                         },
                          {
-                            question: "Q16: What is the minimum passing score for the quiz?",
+                            question: "Q41: What is the minimum passing score for the quiz?",
                             options: ["60%", "70%", "75%", "80%"],
                             correctAnswerIndex: 3,
                             difficulty: "Easy",
                             hint: "Check the course requirements."
                         },
                          {
-                            question: "Q17: How many weekly modules are in this course?",
-                            options: ["6", "8", "10", "12"],
-                            correctAnswerIndex: 1,
+                            question: "Q42: How many modules are in this course?",
+                            options: ["8", "9", "10", "11"],
+                            correctAnswerIndex: 3,
                             difficulty: "Easy",
-                            hint: "Look at the sidebar navigation."
+                            hint: "Count the lessons in the sidebar, including the introduction."
                         },
                          {
-                            question: "Q18: The primary focus of the 'Lessons' tab for a given week is to provide:",
+                            question: "Q43: The primary focus of the 'Lessons' tab for a given module is to provide:",
                             options: ["Quiz questions", "Interactive simulations", "Curated learning resources", "Discussion forums"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "Consider the purpose of the two main tabs."
                         },
                          {
-                            question: "Q19: The 'Quiz' tab allows learners to:",
-                            options: ["Read articles", "Watch videos", "Test their understanding of the weekly material", "Chat with instructors"],
+                            question: "Q44: The 'Quiz' tab allows learners to:",
+                            options: ["Read articles", "Watch videos", "Test their understanding of the module material", "Chat with instructors"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "What is the main function of a quiz?"
                         },
                         {
-                            question: "Q20: The abstract of this course mentions how many 'Four Pillars'?",
+                            question: "Q45: The abstract of this course mentions how many 'Four Pillars'?",
                             options: ["Two", "Three", "Four", "Five"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "Read the course abstract carefully."
                         },
                          {
-                            question: "Q21: A bank's board has identified a significant deficiency in its internal controls related to fraud detection. According to best practices and regulatory expectations, which of the following actions is the board LEAST likely to take?",
+                            question: "Q46: A bank's board has identified a significant deficiency in its internal controls related to fraud detection. According to best practices and regulatory expectations, which of the following actions is the board LEAST likely to take?",
                             options: ["Direct management to develop and implement a remediation plan.", "Increase the frequency of internal audits focused on fraud risks.", "Ignore the deficiency as long as the bank is profitable.", "Request regular updates from management on the status of remediation efforts."],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "Boards are expected to address identified risks and deficiencies."
                         },
                          {
-                            question: "Q22: The CAMELS rating system is used by:",
+                            question: "Q47: The CAMELS rating system is used by:",
                             options: ["Only the FDIC", "Only the OCC", "Only the Federal Reserve", "Multiple federal and state banking regulators"],
                             correctAnswerIndex: 3,
                             difficulty: "Medium",
                             hint: "It's a standardized system used across the regulatory landscape."
                         },
                          {
-                            question: "Q23: Which of the following is NOT typically considered a core component of effective bank governance?",
+                            question: "Q48: Which of the following is NOT typically considered a core component of effective bank governance?",
                             options: ["A clear organizational structure", "Strong internal controls", "Aggressive risk-taking to maximize short-term profits", "Transparent reporting to stakeholders"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Governance aims for safety and soundness, not just profit maximization."
                         },
                          {
-                            question: "Q24: If a bank's board approves a compensation plan that incentivizes excessive risk-taking by loan officers, this would most directly impact which CAMELS component?",
+                            question: "Q49: If a bank's board approves a compensation plan that incentivizes excessive risk-taking by loan officers, this would most directly impact which CAMELS component?",
                             options: ["Capital Adequacy", "Asset Quality", "Management", "Liquidity"],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "Management quality includes the effectiveness of compensation and incentive structures in managing risk."
                         },
                          {
-                            question: "Q25: The primary purpose of the FDIC's Risk Management Manual of Examination Policies is to:",
+                            question: "Q50: The primary purpose of the FDIC's Risk Management Manual of Examination Policies is to:",
                             options: ["Provide a guide for bank employees on daily operations", "Outline the procedures and standards used by FDIC examiners to assess bank condition", "Serve as a marketing brochure for the FDIC", "Detail the process for applying for deposit insurance"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
@@ -698,7 +923,7 @@
                             type: "Reading",
                             title: "CFPB Examination Manual: UDAAP",
                             source: "CFPB",
-                            link: "https://files.consumerfinance.gov/f/201307_cfpb_supervision-manual_udaap.pdf",
+                            link: "https://files.consumerfinance.gov/f/documents/cfpb_unfair-deceptive-abusive-acts-practices-udaaps_procedures.pdf",
                             pageRange: "Pages 1-15",
                             estimatedTime: "60 min",
                             whyMatters: "Provides the core definitions and examination procedures for UDAAP, a critical area of consumer protection compliance."
@@ -724,144 +949,574 @@
                     ],
                      quiz: [
                          {
-                            question: "Q26: UDAAP stands for:",
+                            question: "Q51: UDAAP stands for:",
                             options: ["Unfair, Difficult, and Aggressive Practices", "Unethical, Deceptive, and Abusive Procedures", "Unfair, Deceptive, or Abusive Acts or Practices", "Underwriting, Disclosure, and Approval Processes"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "This is a key acronym in consumer protection."
                         },
                         {
-                            question: "Q27: Which federal agency is primarily responsible for enforcing consumer financial protection laws?",
+                            question: "Q52: Which federal agency is primarily responsible for enforcing consumer financial protection laws?",
                             options: ["FDIC", "OCC", "Federal Reserve", "CFPB"],
                             correctAnswerIndex: 3,
                             difficulty: "Easy",
                             hint: "This agency was created specifically for this purpose after the 2008 financial crisis."
                         },
                          {
-                            question: "Q28: Fair Lending laws prohibit discrimination in credit transactions based on characteristics such as race, religion, and:",
+                            question: "Q53: Fair Lending laws prohibit discrimination in credit transactions based on characteristics such as race, religion, and:",
                             options: ["Income level", "Employment history", "National origin", "Credit score"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "These are protected characteristics."
                         },
                          {
-                            question: "Q29: An act or practice is considered 'deceptive' under UDAAP if it:",
+                            question: "Q54: An act or practice is considered 'deceptive' under UDAAP if it:",
                             options: ["Causes significant financial harm", "Is likely to mislead a reasonable consumer", "Is prohibited by state law", "Is not explicitly approved by regulators"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "The focus is on whether the consumer is likely to be misled."
                         },
                         {
-                            question: "Q30: Which of the following is NOT a primary goal of consumer protection regulations in banking?",
+                            question: "Q55: Which of the following is NOT a primary goal of consumer protection regulations in banking?",
                             options: ["Ensuring fair access to credit", "Promoting transparency in financial products", "Maximizing bank profits", "Protecting consumers from harmful practices"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Regulations are designed to protect consumers, not necessarily boost bank earnings."
                         },
                          {
-                            question: "Q31: A bank offers a loan product with complex fees that are not clearly disclosed, leading consumers to pay more than they expected. This practice is most likely a violation of:",
+                            question: "Q56: A bank offers a loan product with complex fees that are not clearly disclosed, leading consumers to pay more than they expected. This practice is most likely a violation of:",
                             options: ["Fair Lending", "BSA/AML regulations", "UDAAP", "Capital requirements"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Think about practices that could mislead or harm consumers."
                         },
                          {
-                            question: "Q32: A bank's loan officer discourages applicants from a specific neighborhood with a high minority population from applying for mortgages, even if they are qualified. This is a potential violation of:",
+                            question: "Q57: A bank's loan officer discourages applicants from a specific neighborhood with a high minority population from applying for mortgages, even if they are qualified. This is a potential violation of:",
                             options: ["UDAAP", "BSA/AML regulations", "Fair Lending", "Liquidity requirements"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "This relates to equal access to credit based on protected characteristics."
                         },
                         {
-                            question: "Q33: The FDIC Consumer Compliance Examination Manual provides guidance to examiners on how to assess a bank's adherence to:",
+                            question: "Q58: The FDIC Consumer Compliance Examination Manual provides guidance to examiners on how to assess a bank's adherence to:",
                             options: ["Capital adequacy rules", "Anti-money laundering programs", "Consumer protection laws and regulations", "Investment banking activities"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "The title of the manual is a strong clue."
                         },
                          {
-                            question: "Q34: An act or practice is considered 'abusive' under UDAAP if it:",
+                            question: "Q59: An act or practice is considered 'abusive' under UDAAP if it:",
                             options: ["Causes minor inconvenience", "Materially interferes with a consumer's ability to understand a term or condition", "Is common practice in the industry", "Is approved by the bank's legal team"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Abusive practices often involve exploiting a consumer's lack of understanding."
                         },
                          {
-                            question: "Q35: A bank implements a new overdraft fee structure that is technically disclosed but is designed in a way that makes it extremely difficult for consumers to avoid fees, even with careful management of their accounts. A regulator might view this as potentially violating:",
+                            question: "Q60: A bank implements a new overdraft fee structure that is technically disclosed but is designed in a way that makes it extremely difficult for consumers to avoid fees, even with careful management of their accounts. A regulator might view this as potentially violating:",
                             options: ["Fair Lending", "BSA/AML", "UDAAP (specifically abusive)", "Capital requirements"],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "Consider if the practice exploits a consumer's inability to understand or protect themselves."
                         },
                          {
-                            question: "Q36: A bank uses different underwriting standards for loan applicants based on their national origin, even if all other risk factors are the same. This is a clear violation of:",
+                            question: "Q61: A bank uses different underwriting standards for loan applicants based on their national origin, even if all other risk factors are the same. This is a clear violation of:",
                             options: ["UDAAP", "Fair Lending", "BSA/AML", "Liquidity requirements"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "This directly involves discrimination based on a protected characteristic in lending."
                         },
                          {
-                            question: "Q37: The primary purpose of the CFPB is to:",
+                            question: "Q62: The primary purpose of the CFPB is to:",
                             options: ["Insure bank deposits", "Supervise large banks for safety and soundness", "Protect consumers in the financial sector", "Manage the nation's money supply"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "The 'C' in CFPB stands for Consumer."
                         },
                          {
-                            question: "Q38: Which of the following is an example of a potentially 'unfair' act or practice under UDAAP?",
+                            question: "Q63: Which of the following is an example of a potentially 'unfair' act or practice under UDAAP?",
                             options: ["Offering a competitive interest rate on savings accounts", "Charging fees that cause substantial injury to consumers which they cannot reasonably avoid, and that injury is not outweighed by countervailing benefits", "Providing clear and concise loan documents", "Having a user-friendly online banking platform"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Unfair practices involve substantial unavoidable injury that isn't justified by benefits."
                         },
                          {
-                            question: "Q39: A bank's marketing materials for a credit card prominently feature a low introductory rate but bury the significantly higher post-introductory rate in fine print. This could be considered a violation of:",
+                            question: "Q64: A bank's marketing materials for a credit card prominently feature a low introductory rate but bury the significantly higher post-introductory rate in fine print. This could be considered a violation of:",
                             options: ["Fair Lending (unless discriminatory)", "BSA/AML", "UDAAP (specifically deceptive)", "Capital requirements"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Think about whether the marketing is likely to mislead a consumer."
                         },
                          {
-                            question: "Q40: While the ABA Certificate in Bank Financial Regulation covers many topics, the consumer protection module specifically focuses on:",
+                            question: "Q65: While the ABA Certificate in Bank Financial Regulation covers many topics, the consumer protection module specifically focuses on:",
                             options: ["Cybersecurity threats", "Balance sheet management", "Rules designed to protect bank customers", "Corporate governance structures"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "The name of the module is descriptive."
                         },
                          {
-                            question: "Q41: A bank's compliance program should be designed to:",
+                            question: "Q66: A bank's compliance program should be designed to:",
                             options: ["Maximize revenue regardless of regulatory rules", "Ensure adherence to all applicable laws and regulations", "Only focus on preventing money laundering", "Minimize interactions with regulators"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Compliance is about following the rules."
                         },
                          {
-                            question: "Q42: Which of the following is a key component of a strong Fair Lending compliance program?",
+                            question: "Q67: Which of the following is a key component of a strong Fair Lending compliance program?",
                             options: ["Monitoring lending data for potential disparities", "Offering different interest rates based on race", "Discouraging applications from certain demographic groups", "Ignoring customer complaints about discrimination"],
                             correctAnswerIndex: 0,
                             difficulty: "Medium",
                             hint: "Proactive monitoring helps identify potential issues."
                         },
                          {
-                            question: "Q43: If a bank is found to have engaged in a pattern of UDAAP violations, what actions might regulators take?",
+                            question: "Q68: If a bank is found to have engaged in a pattern of UDAAP violations, what actions might regulators take?",
                             options: ["Issue a warning letter", "Impose fines and require remediation", "Revoke the bank's charter immediately", "Offer a bonus to the bank's executives"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Regulators have enforcement powers to address violations."
                         },
                          {
-                            question: "Q44: The concept of 'abusive' under UDAAP is distinct from 'unfair' or 'deceptive' and often involves:",
+                            question: "Q69: The concept of 'abusive' under UDAAP is distinct from 'unfair' or 'deceptive' and often involves:",
                             options: ["Simple errors in paperwork", "Taking unreasonable advantage of a consumer's lack of understanding or inability to protect their interests", "Offering competitive products", "Providing excellent customer service"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Abuse implies exploiting a vulnerability."
                         },
                          {
-                            question: "Q45: When reviewing a bank's consumer compliance program, regulators will assess:",
+                            question: "Q70: When reviewing a bank's consumer compliance program, regulators will assess:",
                             options: ["Only the bank's profitability", "The effectiveness of the bank's policies, procedures, and training", "The political affiliations of the board members", "The bank's marketing budget"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Regulators focus on the systems and controls in place to ensure compliance."
+                        }
+                    ]
+                },
+                {
+                    title: "Credit Underwriting Fundamentals",
+                    outcomes: [
+                        "Explain the purpose and process of credit underwriting.",
+                        "Identify and apply the 'Five C's' of Credit.",
+                        "Describe common types of credit risk and how they are assessed.",
+                        "Understand the role of credit policies and procedures."
+                    ],
+                    resources: [
+                        {
+                            type: "Reading",
+                            title: "OCC Comptroller's Handbook: Commercial and Retail Lending (Underwriting Focus)",
+                            source: "OCC",
+                            link: "https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/commercial-and-retail-lending/pub-ch-commercial-and-retail-lending.pdf",
+                            pageRange: "Pages 1-20 (Focus on Underwriting Principles)",
+                            estimatedTime: "75 min",
+                            whyMatters: "Provides regulatory guidance on sound lending practices and the core principles of credit underwriting for different loan types."
+                        },
+                         {
+                            type: "Video",
+                            title: "The 5 C's of Credit Explained",
+                            source: "Youtube (Corporate Finance Institute)",
+                            link: "https://www.youtube.com/watch?v=k_N4_1v3t1I7", // Placeholder - Replace with actual relevant video link
+                            pageRange: "0:00 - 5:00",
+                            estimatedTime: "7 min",
+                            whyMatters: "A concise explanation of the fundamental factors used to evaluate a borrower's creditworthiness."
+                        },
+                         {
+                            type: "Reading",
+                            title: "FDIC Risk Management Manual of Examination Policies: Section 3.2 - Asset Quality (Credit Risk Focus)",
+                            source: "FDIC",
+                            link: "https://www.fdic.gov/resources/supervision-and-examinations/examination-policies-manual/section3-2.pdf",
+                            pageRange: "Pages 1-10 (Focus on Credit Risk Assessment)",
+                            estimatedTime: "45 min",
+                            whyMatters: "Outlines how examiners assess the quality of a bank's loan portfolio and the effectiveness of credit risk management practices."
+                        }
+                    ],
+                    quiz: [
+                        {
+                            question: "Q71: The primary goal of credit underwriting is to:",
+                            options: ["Approve all loan applications quickly", "Assess the likelihood that a borrower will repay a loan", "Minimize the bank's regulatory burden", "Maximize loan volume"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "Underwriting is about evaluating risk before making a loan."
+                        },
+                        {
+                            question: "Q72: Which of the 'Five C's' of Credit refers to the borrower's reputation and payment history?",
+                            options: ["Capacity", "Capital", "Character", "Collateral"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "This C relates to the borrower's trustworthiness and past behavior."
+                        },
+                        {
+                            question: "Q73: When assessing a borrower's 'Capacity', a credit underwriter primarily examines:",
+                            options: ["Their net worth", "Their ability to generate sufficient cash flow to repay the loan", "The value of assets pledged as security", "Their industry experience"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Capacity is about the borrower's ability to *make* the payments."
+                        },
+                        {
+                            question: "Q74: 'Collateral' in credit underwriting refers to:",
+                            options: ["The borrower's business plan", "Assets pledged by the borrower to secure the loan", "The loan interest rate", "The loan term"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "Collateral provides a secondary source of repayment if the borrower defaults."
+                        },
+                        {
+                            question: "Q75: The 'Conditions' aspect of the Five C's considers:",
+                            options: ["The condition of the bank's physical branches", "The general economic environment and industry-specific factors affecting the borrower", "The borrower's health", "The weather conditions"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "External factors can significantly impact a borrower's ability to repay."
+                        },
+                        {
+                            question: "Q76: A strong credit policy is essential for a bank because it:",
+                            options: ["Guarantees all loans will be repaid", "Provides a framework for consistent and sound lending decisions", "Eliminates the need for credit underwriters", "Only applies to large corporate loans"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Policies ensure a standardized approach to risk management."
+                        },
+                        {
+                            question: "Q77: Which of the following is a common type of credit risk?",
+                            options: ["Operational risk", "Interest rate risk", "Default risk (borrower failing to repay)", "Liquidity risk"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "Credit risk is directly related to the borrower's ability and willingness to pay."
+                        },
+                        {
+                            question: "Q78: When underwriting a commercial loan, a credit analyst would typically review:",
+                            options: ["The borrower's personal vacation photos", "The borrower's financial statements, tax reports, and credit reports", "The bank's marketing plan", "Employee performance reviews"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Financial information is critical for assessing a business's capacity and capital."
+                        },
+                        {
+                            question: "Q79: If a bank's underwriting standards are too lax, it is likely to experience:",
+                            options: ["Increased loan volume and lower credit risk", "Higher levels of non-performing assets and potential losses", "Reduced regulatory scrutiny", "Higher profitability without increased risk"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "Loose standards lead to lending to riskier borrowers, increasing the chance of default."
+                        },
+                        {
+                            question: "Q80: The FDIC's Asset Quality manual provides guidance on assessing credit risk, including:",
+                            options: ["How to design a bank website", "Evaluating the adequacy of a bank's loan loss reserves", "Marketing strategies for new loan products", "Hiring branch managers"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Loan loss reserves are established to cover expected credit losses."
+                        },
+                        {
+                            question: "Q81: A borrower has significant personal wealth that could be used to repay a loan, even if their current income is modest. This relates most directly to which of the Five C's?",
+                            options: ["Character", "Capacity", "Capital", "Conditions"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "Capital refers to the borrower's existing wealth or equity."
+                        },
+                        {
+                            question: "Q82: The OCC Comptroller's Handbook on Commercial and Retail Lending emphasizes the need for:",
+                            options: ["Ignoring credit risk", "Establishing clear loan approval authorities", "Making loans based solely on collateral value", "Avoiding all lending activities"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Proper authority levels ensure appropriate review and approval of credit decisions."
+                        },
+                        {
+                            question: "Q83: A bank uses a credit scoring model for retail loans. While helpful, underwriters must also consider qualitative factors because:",
+                            options: ["The model is always wrong", "Qualitative factors (like job stability or industry outlook) can impact repayment ability and may not be fully captured by a score", "Regulators prohibit the use of credit scores", "Qualitative factors are irrelevant"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "A score is a snapshot; qualitative factors provide broader context."
+                        },
+                        {
+                            question: "Q84: If a loan is classified as 'Substandard' by regulators, it typically means:",
+                            options: ["The loan is performing well", "The loan has a well-defined weakness that jeopardizes the liquidation of the debt", "The loan is risk-free", "The loan is eligible for sale on the secondary market"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "Regulatory classifications indicate the severity of credit problems."
+                        },
+                        {
+                            question: "Q85: A bank's credit administration function is responsible for:",
+                            options: ["Marketing new loan products", "Ongoing monitoring of the loan portfolio and managing problem loans", "Hiring tellers", "Designing the bank's website"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Credit administration manages loans *after* they are originated."
+                        },
+                         {
+                            question: "Q86: When underwriting a residential mortgage, which of the following is a key document reviewed to assess Capacity?",
+                            options: ["The borrower's resume", "Pay stubs and income tax returns", "A list of the borrower's hobbies", "The borrower's social media profiles"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Income documentation is crucial for determining repayment ability."
+                        },
+                         {
+                            question: "Q87: Concentration risk in lending refers to:",
+                            options: ["Having too many employees in one department", "Having a large portion of the loan portfolio exposed to a single borrower, industry, or geographic area", "Concentrating marketing efforts on one product", "Concentrating cash in one vault"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Concentrations can lead to significant losses if that segment experiences problems."
+                        },
+                         {
+                            question: "Q88: If a bank takes a lien on a borrower's equipment as security for a loan, this equipment serves as:",
+                            options: ["Character", "Capacity", "Capital", "Collateral"],
+                            correctAnswerIndex: 3,
+                            difficulty: "Easy",
+                            hint: "This is an asset pledged to secure the loan."
+                        },
+                         {
+                            question: "Q89: The OCC's guidance on lending emphasizes the importance of:",
+                            options: ["Making loans without proper documentation", "Maintaining adequate loan documentation", "Ignoring changes in economic conditions", "Lending only to friends and family"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Good documentation is essential for managing and enforcing loans."
+                        },
+                         {
+                            question: "Q90: A bank's loan review committee is responsible for:",
+                            options: ["Approving all new loan applications", "Periodically reviewing the quality of existing loans and credit risk management processes", "Marketing the bank's loan products", "Processing loan payments"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Loan review provides independent oversight of the credit portfolio."
+                        },
+                         {
+                            question: "Q91: If a borrower's debt-to-income ratio is very high, this would negatively impact which of the Five C's?",
+                            options: ["Character", "Capacity", "Capital", "Collateral"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "A high DTI indicates less ability to take on additional debt payments."
+                        },
+                         {
+                            question: "Q92: A bank is considering a loan to a company in a rapidly declining industry. This factor relates most directly to which of the Five C's?",
+                            options: ["Character", "Capacity", "Capital", "Conditions"],
+                            correctAnswerIndex: 3,
+                            difficulty: "Hard",
+                            hint: "Industry trends are part of the external conditions affecting the borrower."
+                        },
+                         {
+                            question: "Q93: Non-performing loans require banks to:",
+                            options: ["Increase lending", "Set aside funds as loan loss provisions", "Pay higher dividends", "Reduce employee salaries"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Provisions are made to cover expected losses on problem loans."
+                        },
+                         {
+                            question: "Q94: The primary purpose of loan covenants is to:",
+                            options: ["Increase the loan amount", "Set conditions that the borrower must meet to protect the lender's interests", "Reduce the interest rate", "Extend the loan term"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Covenants are designed to provide early warning signs or restrict borrower actions that could increase risk."
+                        },
+                         {
+                            question: "Q95: When underwriting a loan, assessing 'Capital' involves evaluating:",
+                            options: ["The borrower's income stream", "The borrower's existing equity or net worth", "The borrower's credit score", "The value of the collateral"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Capital is about the borrower's financial cushion."
+                        }
+                    ]
+                },
+                 {
+                    title: "Understanding a Banking Profit and Loss Statement",
+                    outcomes: [
+                        "Identify the key components of a bank's Income Statement (P&L).",
+                        "Explain the difference between interest income/expense and non-interest income/expense.",
+                        "Calculate key profitability ratios (e.g., Net Interest Margin, Return on Assets).",
+                        "Analyze trends in a bank's earnings performance."
+                    ],
+                    resources: [
+                        {
+                            type: "Reading",
+                            title: "Understanding Bank Performance",
+                            source: "FDIC",
+                            link: "https://www.fdic.gov/bank/analytical/banking/2004dec/article1/index.html",
+                             pageRange: "Review sections on Income Statement and Profitability Ratios",
+                            estimatedTime: "45 min",
+                            whyMatters: "Provides an overview of how to analyze bank financial performance, including the income statement and key profitability metrics."
+                        },
+                         {
+                            type: "Reading",
+                            title: "Analyzing Bank Financial Statements",
+                            source: "Federal Reserve Bank of Kansas City",
+                            link: "https://www.kansascityfed.org/-/media/files/research/rbc/2018/analyzing-bank-financial-statements/rbc-2018-analyzing-bank-financial-statements.pdf",
+                            pageRange: "Pages 10-18 (Focus on Income Statement Analysis)",
+                            estimatedTime: "60 min",
+                            whyMatters: "Offers a detailed guide on how to interpret bank financial statements, with a specific focus on the components and analysis of the income statement."
+                        },
+                         {
+                            type: "Video",
+                            title: "Bank Income Statement Explained",
+                            source: "Youtube (Khan Academy)",
+                            link: "https://www.youtube.com/watch?v=k_N4_1v3t1I8", // Placeholder - Replace with actual relevant video link
+                            pageRange: "0:00 - 7:00",
+                            estimatedTime: "9 min",
+                            whyMatters: "Provides a visual and conceptual walkthrough of a typical bank income statement."
+                        }
+                    ],
+                    quiz: [
+                        {
+                            question: "Q96: The Income Statement (P&L) of a bank primarily reports:",
+                            options: ["Assets and Liabilities", "Revenues, Expenses, and Net Income over a period", "Capital levels", "Customer deposit balances"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "The P&L shows how profitable the bank was over a specific time."
+                        },
+                        {
+                            question: "Q97: Net Interest Income for a bank is calculated as:",
+                            options: ["Total Revenue - Total Expenses", "Non-Interest Income - Non-Interest Expense", "Interest Income - Interest Expense", "Loan Income + Fee Income"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "This is the core profitability measure from lending and deposit-taking activities."
+                        },
+                        {
+                            question: "Q98: Which of the following is an example of Interest Income for a bank?",
+                            options: ["Fees from ATM usage", "Service charges on deposit accounts", "Interest earned on loans", "Gains on the sale of securities"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "Interest income comes from interest-bearing assets."
+                        },
+                        {
+                            question: "Q99: Which of the following is an example of Non-Interest Income for a bank?",
+                            options: ["Interest paid on deposits", "Salaries and employee benefits", "Fees from wealth management services", "Interest expense on borrowings"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "Non-interest income comes from fees and other non-lending/deposit activities."
+                        },
+                        {
+                            question: "Q100: Net Interest Margin (NIM) is a key profitability ratio calculated as:",
+                            options: ["Net Income / Total Assets", "Net Interest Income / Earning Assets", "Non-Interest Income / Non-Interest Expense", "Total Revenue / Total Expenses"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "NIM measures the profitability of the bank's core lending and funding activities."
+                        },
+                        {
+                            question: "Q101: An increase in a bank's Net Interest Margin (NIM) generally indicates:",
+                            options: ["Decreased profitability from lending", "Improved profitability from its core lending and funding activities", "Higher non-interest expenses", "Lower asset quality"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "A wider margin between interest earned and interest paid is positive for profitability."
+                        },
+                        {
+                            question: "Q102: Return on Assets (ROA) is a profitability ratio calculated as:",
+                            options: ["Net Income / Total Equity", "Net Interest Income / Total Assets", "Net Income / Total Assets", "Total Revenue / Total Assets"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "ROA measures how efficiently the bank is using its assets to generate profit."
+                        },
+                        {
+                            question: "Q103: Return on Equity (ROE) is a profitability ratio calculated as:",
+                            options: ["Net Income / Total Assets", "Net Income / Total Equity", "Total Revenue / Total Equity", "Net Interest Income / Total Equity"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "ROE measures the return generated on the shareholders' investment."
+                        },
+                        {
+                            question: "Q104: Which of the following is typically a significant Non-Interest Expense for a bank?",
+                            options: ["Interest paid on deposits", "Loan interest income", "Salaries and employee benefits", "Fees from credit cards"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "Operating costs are a major expense category."
+                        },
+                        {
+                            question: "Q105: Loan loss provisions are an expense on the Income Statement that reflects:",
+                            options: ["Actual losses from defaulted loans", "Interest earned on loans", "Funds set aside to cover expected future credit losses", "Fees collected from borrowers"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "Provisions are an estimate of future losses, impacting current earnings."
+                        },
+                        {
+                            question: "Q106: If a bank's non-interest expenses increase significantly faster than its non-interest income, this would likely lead to:",
+                            options: ["Improved profitability", "Decreased profitability (lower efficiency)", "Higher Net Interest Margin", "Increased asset quality"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "This indicates worsening operational efficiency."
+                        },
+                        {
+                            question: "Q107: The efficiency ratio is a measure of:",
+                            options: ["Asset quality", "Liquidity", "How well a bank controls its non-interest expenses relative to its revenue", "Capital adequacy"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "Lower efficiency ratios are generally better, indicating lower costs per dollar of revenue."
+                        },
+                         {
+                            question: "Q108: A bank's P&L shows a significant increase in 'Gains on Sale of Securities'. This is an example of:",
+                            options: ["Interest Income", "Interest Expense", "Non-Interest Income", "Non-Interest Expense"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "This income is not generated from core lending or deposit activities."
+                        },
+                         {
+                            question: "Q109: If a bank's ROA decreases, it could be due to:",
+                            options: ["Increased net income with stable assets", "Stable net income with decreased assets", "Decreased net income with stable or increased assets", "Decreased non-interest expenses"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "ROA is Net Income / Total Assets. A decrease means less profit per dollar of assets."
+                        },
+                         {
+                            question: "Q110: The FDIC's 'Understanding Bank Performance' resource highlights that analyzing the income statement helps assess a bank's:",
+                            options: ["Physical security", "Earnings ability and sustainability", "Marketing effectiveness", "Employee satisfaction"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "The income statement is all about financial performance."
+                        },
+                         {
+                            question: "Q111: Which of the following would typically be classified as Interest Expense?",
+                            options: ["Fees earned on checking accounts", "Interest paid on customer deposits", "Salaries of loan officers", "Rent for bank branches"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Easy",
+                            hint: "Interest expense is the cost of funding."
+                        },
+                         {
+                            question: "Q112: Analyzing trends in a bank's Net Interest Margin over several periods can reveal:",
+                            options: ["Changes in the bank's physical footprint", "How effectively the bank is managing the spread between interest earned and interest paid", "Employee turnover rates", "The bank's social media engagement"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "NIM is a key indicator of the profitability of the core business."
+                        },
+                         {
+                            question: "Q113: If a bank's ROE is significantly higher than its ROA, it likely indicates:",
+                            options: ["Poor asset quality", "High leverage (using more debt relative to equity)", "Low non-interest expenses", "Excellent customer service"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "ROE = ROA * Equity Multiplier (Total Assets / Total Equity). A higher equity multiplier means more leverage."
+                        },
+                         {
+                            question: "Q114: The Federal Reserve Bank of Kansas City resource on analyzing bank financial statements suggests that understanding the income statement is crucial for assessing a bank's:",
+                            options: ["Compliance with BSA/AML regulations", "Credit underwriting process", "Ability to generate earnings and cover expenses", "Cybersecurity posture"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Medium",
+                            hint: "The income statement directly shows revenues and costs."
+                        },
+                         {
+                            question: "Q115: Non-interest expenses include costs such as:",
+                            options: ["Interest paid on borrowings", "Salaries, rent, and technology costs", "Interest earned on investments", "Fees from loan origination"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "These are the operating costs of running the bank."
+                        },
+                         {
+                            question: "Q116: If a bank's Net Income decreases from one period to the next, potential reasons could include:",
+                            options: ["A significant increase in interest income", "A decrease in loan loss provisions", "An increase in non-interest expenses or loan losses", "A decrease in non-interest income"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Hard",
+                            hint: "Decreased net income results from lower revenues or higher expenses/losses."
+                        },
+                         {
+                            question: "Q117: The 'Provision for Loan and Lease Losses' on the income statement is an estimate made by management based on:",
+                            options: ["The bank's marketing success", "The expected credit losses in the loan portfolio", "The number of new accounts opened", "Employee training hours"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "This provision is directly tied to the risk in the loan portfolio."
+                        },
+                         {
+                            question: "Q118: A bank's P&L shows a line item for 'Service Charges on Deposit Accounts'. This is a form of:",
+                            options: ["Interest Income", "Interest Expense", "Non-Interest Income", "Non-Interest Expense"],
+                            correctAnswerIndex: 2,
+                            difficulty: "Easy",
+                            hint: "These are fees, not interest."
+                        },
+                         {
+                            question: "Q119: A key takeaway from analyzing a bank's P&L is to understand:",
+                            options: ["Only the total revenue amount", "The sources of revenue and the types of expenses that impact profitability", "Only the final net income figure", "The bank's physical location strategy"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Medium",
+                            hint: "Understanding the components provides insight into the drivers of profitability."
+                        },
+                         {
+                            question: "Q120: If a bank's ROA and ROE are both declining, it could indicate:",
+                            options: ["Improving financial performance", "Worsening financial performance and potential issues with asset quality or efficiency", "Increased capital levels", "Reduced risk"],
+                            correctAnswerIndex: 1,
+                            difficulty: "Hard",
+                            hint: "Declining profitability ratios are a red flag for financial health."
                         }
                     ]
                 },
@@ -885,12 +1540,12 @@
                         },
                         {
                             type: "Reading",
-                            title: "FinCEN Advisory: Advisory to Financial Institutions on Cybercrime and Cyber-Enabled Crime",
+                            title: "FinCEN Advisory: Advisory on Ransomware and the Use of the Financial System to Facilitate Ransom Payments",
                             source: "FinCEN",
-                            link: "https://www.fincen.gov/sites/default/files/advisory/2016-10-25/FIN-2016-A005_1.pdf",
-                            pageRange: "Pages 1-7",
+                            link: "https://www.fincen.gov/sites/default/files/advisory/2021-10-15/FinCEN%20Ransomware%20Advisory%20%28October%202021%29_0.pdf",
+                            pageRange: "Pages 1-8",
                             estimatedTime: "30 min",
-                            whyMatters: "Illustrates how FinCEN provides guidance to financial institutions on identifying and reporting specific types of illicit activity."
+                            whyMatters: "Provides guidance to financial institutions on identifying and reporting suspicious activity related to ransomware attacks."
                         },
                          {
                             type: "Reading",
@@ -904,140 +1559,140 @@
                     ],
                      quiz: [
                          {
-                            question: "Q46: The primary purpose of the Bank Secrecy Act (BSA) is to:",
+                            question: "Q121: The primary purpose of the Bank Secrecy Act (BSA) is to:",
                             options: ["Regulate bank mergers", "Prevent and detect money laundering and terrorist financing", "Set capital requirements for banks", "Provide deposit insurance"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Think about the core goal of the BSA."
                         },
                          {
-                            question: "Q47: The four pillars of a BSA/AML program include a Compliance Officer, Training, Independent Testing, and:",
+                            question: "Q122: The four pillars of a BSA/AML program include a Compliance Officer, Training, Independent Testing, and:",
                             options: ["High profitability", "A system of internal controls", "Aggressive marketing", "Strong cybersecurity only"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "These are the foundational elements required by regulation."
                         },
                          {
-                            question: "Q48: A Currency Transaction Report (CTR) must generally be filed for cash transactions exceeding what amount?",
+                            question: "Q123: A Currency Transaction Report (CTR) must generally be filed for cash transactions exceeding what amount?",
                             options: ["$3,000", "$5,000", "$10,000", "$25,000"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "This is a specific threshold set by the BSA."
                         },
                          {
-                            question: "Q49: A Suspicious Activity Report (SAR) is filed when a bank suspects a transaction or series of transactions involves:",
+                            question: "Q124: A Suspicious Activity Report (SAR) is filed when a bank suspects a transaction or series of transactions involves:",
                             options: ["A large deposit", "Potential money laundering or other illicit activity", "A new customer opening an account", "A loan application"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "SARs are specifically for reporting suspicious behavior."
                         },
                          {
-                            question: "Q50: FinCEN stands for:",
+                            question: "Q125: FinCEN stands for:",
                             options: ["Financial Crimes Enforcement Network", "Federal Insurance and Compliance Network", "Financial Control Center", "Federal Information and Compliance Exchange"],
                             correctAnswerIndex: 0,
                             difficulty: "Easy",
                             hint: "This agency is part of the U.S. Department of the Treasury."
                         },
                          {
-                            question: "Q51: Which of the four pillars of a BSA/AML program is responsible for ensuring the program is functioning effectively and identifying areas for improvement?",
+                            question: "Q126: Which of the four pillars of a BSA/AML program is responsible for ensuring the program is functioning effectively and identifying areas for improvement?",
                             options: ["Compliance Officer", "Training", "Independent Testing", "System of Internal Controls"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "This pillar involves an objective review."
                         },
                          {
-                            question: "Q52: A bank's BSA/AML training program should be tailored to:",
+                            question: "Q127: A bank's BSA/AML training program should be tailored to:",
                             options: ["Only senior management", "All employees, based on their roles and responsibilities", "Only employees in the compliance department", "Only new employees"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "BSA/AML is a responsibility for everyone in the bank to some degree."
                         },
                          {
-                            question: "Q53: The FFIEC BSA/AML Examination Manual is used by:",
+                            question: "Q128: The FFIEC BSA/AML Examination Manual is used by:",
                             options: ["Only bank tellers", "Bank customers", "Regulators to examine bank compliance", "Marketing departments"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "The manual is designed for those who assess compliance."
                         },
                          {
-                            question: "Q54: A customer makes multiple cash deposits just under the $10,000 CTR threshold over a short period. This activity is known as:",
+                            question: "Q129: A customer makes multiple cash deposits just under the $10,000 CTR threshold over a short period. This activity is known as:",
                             options: ["Structuring", "Layering", "Integration", "Smurfing"],
                             correctAnswerIndex: 0,
                             difficulty: "Medium",
                             hint: "This is a common tactic to avoid reporting requirements."
                         },
                          {
-                            question: "Q55: FinCEN advisories are issued to:",
+                            question: "Q130: FinCEN advisories are issued to:",
                             options: ["Announce new bank products", "Provide guidance to financial institutions on specific illicit finance typologies or risks", "Set interest rates", "Approve bank mergers"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Advisories inform institutions about potential threats and how to spot them."
                         },
                          {
-                            question: "Q56: A bank identifies suspicious activity related to potential terrorist financing. What is the primary reporting mechanism required by the BSA?",
+                            question: "Q131: A bank identifies suspicious activity related to potential terrorist financing. What is the primary reporting mechanism required by the BSA?",
                             options: ["File a CTR", "File a SAR", "Notify local law enforcement", "Close the account immediately without reporting"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "SARs are specifically for reporting suspicious activities."
                         },
                          {
-                            question: "Q57: The 'system of internal controls' pillar of a BSA/AML program includes:",
+                            question: "Q132: The 'system of internal controls' pillar of a BSA/AML program includes:",
                             options: ["Only transaction monitoring software", "Policies, procedures, and processes to manage BSA/AML risks", "The bank's marketing strategy", "Employee vacation schedules"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "This pillar encompasses the bank's operational framework for compliance."
                         },
                          {
-                            question: "Q58: If a bank fails to file required CTRs or SARs, it may face penalties from:",
+                            question: "Q133: If a bank fails to file required CTRs or SARs, it may face penalties from:",
                             options: ["The bank's customers", "Only the state regulator", "FinCEN and other federal regulators", "The bank's shareholders"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "BSA/AML violations can result in significant regulatory action."
                         },
                          {
-                            question: "Q59: The ABA Certificate in Anti-Money Laundering (AML) is designed to:",
+                            question: "Q134: The ABA Certificate in Anti-Money Laundering (AML) is designed to:",
                             options: ["Teach employees how to launder money", "Provide foundational knowledge and skills for AML professionals", "Replace regulatory requirements", "Focus only on cybersecurity"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Professional certifications aim to build expertise."
                         },
                          {
-                            question: "Q60: When reviewing a bank's BSA/AML program, examiners will assess:",
+                            question: "Q135: When reviewing a bank's BSA/AML program, examiners will assess:",
                             options: ["The bank's stock price", "Whether the program is commensurate with the bank's risk profile", "The bank's advertising campaigns", "The number of branches the bank has"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "The program's effectiveness is judged relative to the risks the bank faces."
                         },
                          {
-                            question: "Q61: A bank receives a FinCEN advisory about a new money laundering scheme involving virtual currency. What should the bank's BSA/AML program do in response?",
+                            question: "Q136: A bank receives a FinCEN advisory about a new money laundering scheme involving virtual currency. What should the bank's BSA/AML program do in response?",
                             options: ["Ignore the advisory if the bank doesn't currently handle virtual currency.", "Review the advisory, assess potential exposure, and update risk assessments, policies, and training as needed.", "Immediately cease all customer transactions.", "Publicly disclose the advisory to all customers."],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Advisories require a proactive response to assess and manage risk."
                         },
                          {
-                            question: "Q62: Which of the following is a red flag for potential money laundering that a bank employee should be trained to identify?",
+                            question: "Q137: Which of the following is a red flag for potential money laundering that a bank employee should be trained to identify?",
                             options: ["A customer making a small, routine deposit", "A customer conducting large, complex transactions that don't make sense for their stated business", "A customer asking about interest rates", "A customer withdrawing a small amount of cash"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Money laundering often involves transactions that lack a clear legitimate purpose."
                         },
                          {
-                            question: "Q63: The independent testing component of a BSA/AML program can be conducted by:",
+                            question: "Q138: The independent testing component of a BSA/AML program can be conducted by:",
                             options: ["The bank's BSA Officer", "The bank's tellers", "Qualified internal staff independent of the BSA function, or external parties", "The bank's marketing team"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Independence is key to objective testing."
                         },
                          {
-                            question: "Q64: What is the primary goal of customer due diligence (CDD) within a BSA/AML program?",
+                            question: "Q139: What is the primary goal of customer due diligence (CDD) within a BSA/AML program?",
                             options: ["To increase sales", "To understand the nature and purpose of customer relationships to assess risk", "To collect marketing data", "To speed up transaction processing"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "CDD is about knowing your customer to understand their risk profile."
                         },
                          {
-                            question: "Q65: If a bank's independent BSA/AML test identifies significant deficiencies, what is the expected next step?",
+                            question: "Q140: If a bank's independent BSA/AML test identifies significant deficiencies, what is the expected next step?",
                             options: ["Ignore the findings until the next test", "Develop and implement a corrective action plan", "Fire the BSA Officer", "Increase marketing spending"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
@@ -1058,7 +1713,7 @@
                             type: "Reading",
                             title: "FDIC Risk Management Manual of Examination Policies: Section 3.1 - Capital Adequacy",
                             source: "FDIC",
-                            link: "https://www.fdic.gov/regulations/safety/manual/section3-1.pdf",
+                            link: "https://www.fdic.gov/resources/supervision-and-examinations/examination-policies-manual/section3-1.pdf",
                             pageRange: "Pages 1-20",
                             estimatedTime: "75 min",
                             whyMatters: "Outlines the regulatory framework and examination procedures for assessing a bank's capital levels."
@@ -1067,7 +1722,7 @@
                             type: "Reading",
                             title: "FDIC Risk Management Manual of Examination Policies: Section 7.1 - Liquidity and Funds Management",
                             source: "FDIC",
-                            link: "https://www.fdic.gov/regulations/safety/manual/section7-1.pdf",
+                            link: "https://www.fdic.gov/resources/supervision-and-examinations/examination-policies-manual/section7-1.pdf",
                             pageRange: "Pages 1-15",
                             estimatedTime: "60 min",
                             whyMatters: "Details regulatory expectations for managing liquidity risk and maintaining sufficient liquid assets."
@@ -1084,289 +1739,144 @@
                     ],
                      quiz: [
                          {
-                            question: "Q66: Bank capital serves as a buffer to absorb losses and protect:",
+                            question: "Q141: Bank capital serves as a buffer to absorb losses and protect:",
                             options: ["Bank employees", "Bank shareholders", "Bank depositors and the Deposit Insurance Fund", "Bank executives"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "Think about who is protected if a bank fails."
                         },
                          {
-                            question: "Q67: Common Equity Tier 1 (CET1) is a key measure of a bank's:",
+                            question: "Q142: Common Equity Tier 1 (CET1) is a key measure of a bank's:",
                             options: ["Liquidity", "Profitability", "Highest quality capital", "Operational efficiency"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "CET1 represents the most loss-absorbing form of capital."
                         },
                          {
-                            question: "Q68: Liquidity risk is the risk that a bank cannot meet its obligations when they come due without incurring:",
+                            question: "Q143: Liquidity risk is the risk that a bank cannot meet its obligations when they come due without incurring:",
                             options: ["Significant losses", "Increased profitability", "Reduced regulatory burden", "Higher stock price"],
                             correctAnswerIndex: 0,
                             difficulty: "Easy",
                             hint: "Inability to meet obligations can force a bank to sell assets quickly at unfavorable prices."
                         },
                          {
-                            question: "Q69: The Liquidity Coverage Ratio (LCR) requires banks to hold sufficient high-quality liquid assets (HQLA) to cover net cash outflows over what time horizon?",
+                            question: "Q144: The Liquidity Coverage Ratio (LCR) requires banks to hold sufficient high-quality liquid assets (HQLA) to cover net cash outflows over what time horizon?",
                             options: ["1 day", "7 days", "30 days", "90 days"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "The LCR is designed for a short-term stress scenario."
                         },
                          {
-                            question: "Q70: Regulatory capital requirements are designed to ensure banks:",
+                            question: "Q145: Regulatory capital requirements are designed to ensure banks:",
                             options: ["Maximize dividends to shareholders", "Can absorb unexpected losses and remain solvent", "Minimize customer service costs", "Invest only in government securities"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Capital is a safety and soundness measure."
                         },
                          {
-                            question: "Q71: If a bank's capital ratios fall below regulatory minimums, regulators may require the bank to:",
+                            question: "Q146: If a bank's capital ratios fall below regulatory minimums, regulators may require the bank to:",
                             options: ["Increase lending rapidly", "Reduce dividends, raise new capital, or restrict growth", "Increase executive bonuses", "Close all branches"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Falling below minimums triggers supervisory actions to restore capital levels."
                         },
                          {
-                            question: "Q72: High-Quality Liquid Assets (HQLA) under the LCR framework typically include:",
+                            question: "Q147: High-Quality Liquid Assets (HQLA) under the LCR framework typically include:",
                             options: ["Long-term corporate loans", "Residential mortgages", "Cash and government securities", "Bank buildings and equipment"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "HQLA are assets that can be easily and quickly converted to cash with minimal loss of value."
                         },
                          {
-                            question: "Q73: A bank experiences a sudden, unexpected withdrawal of a large volume of deposits. This is an example of:",
+                            question: "Q148: A bank experiences a sudden, unexpected withdrawal of a large volume of deposits. This is an example of:",
                             options: ["Credit risk", "Operational risk", "Market risk", "Liquidity risk"],
                             correctAnswerIndex: 3,
                             difficulty: "Medium",
                             hint: "This directly impacts the bank's ability to meet its short-term cash needs."
                         },
                          {
-                            question: "Q74: The FDIC Risk Management Manual's section on Capital Adequacy focuses on:",
+                            question: "Q149: The FDIC Risk Management Manual's section on Capital Adequacy focuses on:",
                             options: ["Marketing strategies", "How examiners assess a bank's capital position against regulatory requirements", "Employee training programs", "Branch expansion plans"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The manual is for examiners reviewing risk management."
                         },
                          {
-                            question: "Q75: The OCC Comptroller's Handbook on Capital and Dividends provides guidance for:",
+                            question: "Q150: The OCC Comptroller's Handbook on Capital and Dividends provides guidance for:",
                             options: ["State-chartered banks only", "Credit unions", "National banks", "Investment firms"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "The OCC supervises national banks."
                         },
                          {
-                            question: "Q76: A bank has Total Capital of $100 million and Risk-Weighted Assets (RWAs) of $800 million. What is its Total Capital Ratio?",
+                            question: "Q151: A bank has Total Capital of $100 million and Risk-Weighted Assets (RWAs) of $800 million. What is its Total Capital Ratio?",
                             options: ["8%", "10%", "12.5%", "20%"],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "Total Capital Ratio = (Total Capital / RWAs) * 100%"
                         },
                          {
-                            question: "Q77: The Net Stable Funding Ratio (NSFR) is a regulatory metric designed to promote funding stability over what time horizon?",
+                            question: "Q152: The Net Stable Funding Ratio (NSFR) is a regulatory metric designed to promote funding stability over what time horizon?",
                             options: ["1 day", "30 days", "90 days", "1 year"],
                             correctAnswerIndex: 3,
                             difficulty: "Hard",
                             hint: "The NSFR complements the LCR by focusing on longer-term funding."
                         },
                          {
-                            question: "Q78: If a bank has a high concentration of funding from large, uninsured corporate deposits, this would likely increase its exposure to:",
+                            question: "Q153: If a bank has a high concentration of funding from large, uninsured corporate deposits, this would likely increase its exposure to:",
                             options: ["Credit risk", "Operational risk", "Liquidity risk", "Interest rate risk"],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "Large, uninsured deposits are considered less 'sticky' and more prone to rapid withdrawal."
                         },
                          {
-                            question: "Q79: Regulatory stress tests for large banks often simulate severe economic downturns to assess the bank's ability to withstand losses and maintain sufficient levels of:",
+                            question: "Q154: Regulatory stress tests for large banks often simulate severe economic downturns to assess the bank's ability to withstand losses and maintain sufficient levels of:",
                             options: ["Marketing budget", "Employee morale", "Capital and liquidity", "Branch network size"],
                             correctAnswerIndex: 2,
-difficulty: "Medium",
+                            difficulty: "Medium",
                             hint: "Stress tests evaluate resilience against adverse conditions."
                         },
                          {
-                            question: "Q80: A bank's Asset-Liability Committee (ALCO) is responsible for managing the bank's:",
+                            question: "Q155: A bank's Asset-Liability Committee (ALCO) is responsible for managing the bank's:",
                             options: ["Employee benefits", "Physical security", "Balance sheet risks, including interest rate and liquidity risk", "Marketing campaigns"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "ALCO focuses on the risks arising from the composition of assets and liabilities."
                         },
                          {
-                            question: "Q81: A key difference between the LCR and the NSFR is that the LCR focuses on short-term liquidity stress (30 days), while the NSFR focuses on:",
+                            question: "Q156: A key difference between the LCR and the NSFR is that the LCR focuses on short-term liquidity stress (30 days), while the NSFR focuses on:",
                             options: ["Long-term funding stability (1 year)", "Credit risk management", "Operational efficiency", "Consumer protection compliance"],
                             correctAnswerIndex: 0,
                             difficulty: "Medium",
                             hint: "They address different time horizons of funding risk."
                         },
                          {
-                            question: "Q82: If a bank's Risk-Weighted Assets (RWAs) increase significantly due to a change in its loan portfolio composition (e.g., more higher-risk loans), how would this impact its capital ratios, assuming capital levels remain constant?",
+                            question: "Q157: If a bank's Risk-Weighted Assets (RWAs) increase significantly due to a change in its loan portfolio composition (e.g., more higher-risk loans), how would this impact its capital ratios, assuming capital levels remain constant?",
                             options: ["Capital ratios would increase", "Capital ratios would decrease", "Capital ratios would remain unchanged", "Capital ratios would become irrelevant"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Capital ratios are calculated as Capital divided by RWAs. If the denominator increases while the numerator stays the same, the ratio decreases."
                         },
                          {
-                            question: "Q83: The primary source of liquidity for most banks is:",
+                            question: "Q158: The primary source of liquidity for most banks is:",
                             options: ["Selling off bank buildings", "Borrowing from other banks or the Federal Reserve", "Customer deposits", "Issuing corporate bonds"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Deposits are the core funding source."
                         },
                          {
-                            question: "Q84: A bank holds a large portfolio of highly liquid U.S. Treasury securities. Under the LCR framework, these securities would be considered:",
+                            question: "Q159: A bank holds a large portfolio of highly liquid U.S. Treasury securities. Under the LCR framework, these securities would be considered:",
                             options: ["Low-quality assets", "High-Quality Liquid Assets (HQLA)", "Risk-weighted assets", "Non-performing assets"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Government securities are typically considered highly liquid and safe."
                         },
                          {
-                            question: "Q85: The OCC Comptroller's Handbook on Capital and Dividends would be most relevant to an examiner reviewing:",
+                            question: "Q160: The OCC Comptroller's Handbook on Capital and Dividends would be most relevant to an examiner reviewing:",
                             options: ["A state-chartered credit union's liquidity", "A national bank's compliance with capital requirements", "A state-chartered bank's BSA/AML program", "A credit union's consumer protection practices"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "The OCC supervises national banks, and this handbook covers capital."
-                        }
-                    ]
-                },
-                {
-                    title: "Credit Underwriting & Asset Quality",
-                    outcomes: [
-                        "Explain the purpose of credit underwriting.",
-                        "Identify the 'Five C's' of Credit.",
-                        "Describe how banks assess and manage credit risk.",
-                        "Understand the concept of non-performing assets and their impact."
-                    ],
-                    resources: [
-                        {
-                            type: "Reading",
-                            title: "FDIC Risk Management Manual of Examination Policies: Section 3.2 - Asset Quality",
-                            source: "FDIC",
-                            link: "https://www.fdic.gov/regulations/safety/manual/section3-2.pdf",
-                            pageRange: "Pages 1-25",
-                            estimatedTime: "90 min",
-                            whyMatters: "Details how examiners assess the quality of a bank's loan portfolio and other assets, a key driver of bank failures."
-                        },
-                        {
-                            type: "Reading",
-                            title: "OCC Comptroller's Handbook: Commercial and Retail Lending",
-                            source: "OCC",
-                            link: "https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/commercial-and-retail-lending/pub-ch-commercial-and-retail-lending.pdf",
-                            pageRange: "Pages 1-20 (Focus on Underwriting Principles)",
-                            estimatedTime: "75 min",
-                            whyMatters: "Provides guidance on sound lending practices and risk management for different loan types."
-                        },
-                         {
-                            type: "Video",
-                            title: "The 5 C's of Credit Explained",
-                            source: "Youtube (Corporate Finance Institute)",
-                            link: "https://www.youtube.com/watch?v=11111111111", // Placeholder - Replace with actual relevant video link
-                            pageRange: "0:00 - 5:00", // Example time stamp
-                            estimatedTime: "7 min",
-                            whyMatters: "A concise explanation of the fundamental factors used to evaluate a borrower's creditworthiness."
-                        }
-                    ],
-                     quiz: [
-                         {
-                            question: "Q86: Credit underwriting is the process of:",
-                            options: ["Managing bank investments", "Assessing the creditworthiness of a loan applicant", "Marketing bank products", "Handling customer complaints"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Easy",
-                            hint: "Think about what happens before a loan is approved."
-                        },
-                         {
-                            question: "Q87: The 'Five C's' of Credit are Character, Capacity, Capital, Collateral, and:",
-                            options: ["Compliance", "Customers", "Conditions", "Competition"],
-                            correctAnswerIndex: 2,
-                            difficulty: "Easy",
-                            hint: "These are the key factors in evaluating a borrower."
-                        },
-                         {
-                            question: "Q88: Asset Quality in banking primarily refers to the quality of a bank's:",
-                            options: ["Employees", "Loan portfolio and other investments", "Buildings and equipment", "Marketing materials"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Easy",
-                            hint: "Assets are what the bank owns, and loans are a major asset."
-                        },
-                         {
-                            question: "Q89: Non-performing assets (NPAs) are assets (typically loans) that are:",
-                            options: ["Generating high returns", "Not currently generating income due to borrower default or distress", "Held for trading purposes", "Government securities"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Easy",
-                            hint: "NPAs are assets that are not performing as expected, usually due to non-payment."
-                        },
-                         {
-                            question: "Q90: Which of the Five C's refers to the borrower's ability to repay the loan based on their cash flow?",
-                            options: ["Character", "Capacity", "Capital", "Collateral"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Medium",
-                            hint: "This is about the borrower's financial strength to make payments."
-                        },
-                         {
-                            question: "Q91: A bank's loan policy should include:",
-                            options: ["Details of employee benefits", "Underwriting standards, loan approval limits, and risk grading systems", "Marketing slogans", "Branch operating hours"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Medium",
-                            hint: "Loan policies govern how the bank makes and manages loans."
-                        },
-                         {
-                            question: "Q92: The FDIC's Asset Quality manual provides guidance for examiners on:",
-                            options: ["How to open new bank branches", "Assessing the risk and collectibility of a bank's loans and investments", "Designing online banking platforms", "Calculating employee payroll"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Easy",
-                            hint: "The manual's title directly indicates its focus."
-                        },
-                         {
-                            question: "Q93: If a bank has a high level of non-performing assets, this typically indicates:",
-                            options: ["Strong financial health", "Weak asset quality and potential future losses", "Excellent customer service", "High employee satisfaction"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Medium",
-                            hint: "NPAs are a sign of problems in the loan portfolio."
-                        },
-                         {
-                            question: "Q94: The OCC Comptroller's Handbook on Commercial and Retail Lending emphasizes the importance of:",
-                            options: ["Making loans quickly without much review", "Sound underwriting practices and ongoing portfolio management", "Investing heavily in cryptocurrency", "Minimizing customer interaction"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Medium",
-                            hint: "Regulatory guidance promotes safe and sound lending."
-                        },
-                         {
-                            question: "Q95: Which of the Five C's refers to the borrower's past credit history and willingness to repay debts?",
-                            options: ["Character", "Capacity", "Capital", "Collateral"],
-                            correctAnswerIndex: 0,
-                            difficulty: "Medium",
-                            hint: "This is about the borrower's track record and integrity."
-                        },
-                         {
-                            question: "Q96: A bank is evaluating a loan application from a small business. The business has limited cash flow but significant real estate holdings that could be pledged as security. Which of the Five C's is most relevant to the real estate holdings?",
-                            options: ["Character", "Capacity", "Capital", "Collateral"],
-                            correctAnswerIndex: 3,
-                            difficulty: "Hard",
-                            hint: "Collateral is an asset pledged to secure the loan."
-                        },
-                         {
-                            question: "Q97: A bank's loan review process should include:",
-                            options: ["Only reviewing new loans", "Periodic assessment of existing loans to identify potential problems early", "Reviewing only profitable loans", "Reviewing only loans made to friends and family"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Medium",
-                            hint: "Ongoing review is crucial for managing credit risk in the existing portfolio."
-                        },
-                         {
-                            question: "Q98: If a bank's non-performing asset ratio significantly increases, how might this impact the bank's earnings?",
-                            options: ["Earnings would likely increase due to higher interest income.", "Earnings would likely decrease due to loan losses and increased provisioning.", "Earnings would remain unchanged.", "Earnings would become irrelevant."],
-                            correctAnswerIndex: 1,
-                            difficulty: "Hard",
-                            hint: "NPAs often result in charge-offs and require setting aside funds for potential losses, reducing earnings."
-                        },
-                         {
-                            question: "Q99: The 'Conditions' component of the Five C's refers to:",
-                            options: ["The condition of the bank's building", "The general economic conditions and industry-specific factors affecting the borrower", "The physical condition of the collateral", "The borrower's health condition"],
-                            correctAnswerIndex: 1,
-                            difficulty: "Medium",
-                            hint: "This considers external factors influencing the borrower's ability to repay."
-                        },
-                         {
-                            question: "Q100: A bank is considering a large commercial real estate (CRE) loan. Regulators pay close attention to CRE concentrations because:",
-                            options: ["CRE loans are always risk-free.", "CRE markets can be volatile, and concentrations can expose banks to significant losses during downturns.", "CRE loans are easy to underwrite.", "CRE loans are not subject to regulation."],
-                            correctAnswerIndex: 1,
-                            difficulty: "Hard",
-                            hint: "Concentration risk is a key concern, especially in cyclical markets like CRE."
                         }
                     ]
                 },
@@ -1383,7 +1893,7 @@ difficulty: "Medium",
                             type: "Reading",
                             title: "FDIC Risk Management Manual of Examination Policies: Section 7.1 - Liquidity and Funds Management (Focus on Stress Testing)",
                             source: "FDIC",
-                            link: "https://www.fdic.gov/regulations/safety/manual/section7-1.pdf",
+                            link: "https://www.fdic.gov/resources/supervision-and-examinations/examination-policies-manual/section7-1.pdf",
                             pageRange: "Pages 16-25 (Focus on Stress Testing)",
                             estimatedTime: "45 min",
                             whyMatters: "Provides regulatory expectations for banks to conduct stress tests to assess their ability to withstand liquidity shocks."
@@ -1409,105 +1919,105 @@ difficulty: "Medium",
                     ],
                      quiz: [
                          {
-                            question: "Q101: The primary role of a bank's ALCO is to manage:",
+                            question: "Q161: The primary role of a bank's ALCO is to manage:",
                             options: ["Employee hiring", "Marketing campaigns", "Balance sheet risks, including interest rate and liquidity risk", "Physical security"],
                             correctAnswerIndex: 2,
                             difficulty: "Easy",
                             hint: "ALCO focuses on the bank's overall financial structure and associated risks."
                         },
                          {
-                            question: "Q102: Liquidity stress testing helps a bank assess its ability to:",
+                            question: "Q162: Liquidity stress testing helps a bank assess its ability to:",
                             options: ["Increase loan volume rapidly", "Withstand periods of significant cash outflows or reduced funding availability", "Reduce regulatory requirements", "Maximize short-term profits"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Stress tests evaluate resilience under adverse conditions."
                         },
                          {
-                            question: "Q103: Interest rate risk on a bank's balance sheet arises from mismatches in the repricing or maturity of:",
+                            question: "Q163: Interest rate risk on a bank's balance sheet arises from mismatches in the repricing or maturity of:",
                             options: ["Employee salaries", "Assets and liabilities", "Marketing expenses", "Branch locations"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Changes in interest rates impact assets and liabilities differently."
                         },
                          {
-                            question: "Q104: If a bank has more assets that reprice or mature quickly than liabilities that reprice or mature quickly in a rising interest rate environment, its net interest income is likely to:",
+                            question: "Q164: If a bank has more assets that reprice or mature quickly than liabilities that reprice or mature quickly in a rising interest rate environment, its net interest income is likely to:",
                             options: ["Increase", "Decrease", "Remain unchanged", "Become negative"],
                             correctAnswerIndex: 0,
                             difficulty: "Hard",
                             hint: "Assets reprice faster means the bank earns more on its assets sooner than it pays more on its liabilities."
                         },
                          {
-                            question: "Q105: Which of the following is a key component of a bank's balance sheet?",
+                            question: "Q165: Which of the following is a key component of a bank's balance sheet?",
                             options: ["Customer service scores", "Assets (like loans), Liabilities (like deposits), and Capital", "Employee training records", "Marketing budget"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The balance sheet follows the accounting equation: Assets = Liabilities + Capital."
                         },
                          {
-                            question: "Q106: The FDIC's guidance on Liquidity and Funds Management emphasizes the need for banks to:",
+                            question: "Q166: The FDIC's guidance on Liquidity and Funds Management emphasizes the need for banks to:",
                             options: ["Avoid holding any liquid assets", "Conduct regular liquidity stress tests", "Rely solely on brokered deposits for funding", "Ignore potential funding shocks"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Stress testing is a key tool for managing liquidity risk."
                         },
                          {
-                            question: "Q107: A bank's ALCO is typically composed of:",
+                            question: "Q167: A bank's ALCO is typically composed of:",
                             options: ["Only tellers", "Representatives from various departments including lending, treasury, and finance", "Only the CEO", "External consultants only"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Managing balance sheet risk requires input from different areas of the bank."
                         },
                          {
-                            question: "Q108: If a bank's liabilities reprice faster than its assets in a rising interest rate environment, its net interest income is likely to:",
+                            question: "Q168: If a bank's liabilities reprice faster than its assets in a rising interest rate environment, its net interest income is likely to:",
                             options: ["Increase", "Decrease", "Remain unchanged", "Become significantly positive"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "If funding costs (liabilities) increase faster than asset yields, profitability is squeezed."
                         },
                          {
-                            question: "Q109: The OCC Comptroller's Handbook on Interest Rate Risk provides guidance on:",
+                            question: "Q169: The OCC Comptroller's Handbook on Interest Rate Risk provides guidance on:",
                             options: ["How to set customer loan rates", "Identifying, measuring, monitoring, and controlling interest rate risk", "Marketing bank products", "Hiring loan officers"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The handbook is focused on managing this specific risk."
                         },
                          {
-                            question: "Q110: A bank's contingency funding plan (CFP) is a critical component of liquidity risk management and outlines:",
+                            question: "Q170: A bank's contingency funding plan (CFP) is a critical component of liquidity risk management and outlines:",
                             options: ["How to open new branches", "Strategies for managing liquidity during periods of stress", "Employee vacation schedules", "Marketing strategies"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "The CFP is the bank's plan for accessing funds when needed in a crisis."
                         },
                          {
-                            question: "Q111: A bank holds a portfolio of fixed-rate mortgages funded by variable-rate deposits. In a rising interest rate environment, this bank is exposed to significant:",
+                            question: "Q171: A bank holds a portfolio of fixed-rate mortgages funded by variable-rate deposits. In a rising interest rate environment, this bank is exposed to significant:",
                             options: ["Credit risk", "Operational risk", "Interest rate risk", "Compliance risk"],
                             correctAnswerIndex: 2,
                             difficulty: "Hard",
                             hint: "The mismatch between fixed-rate assets and variable-rate liabilities creates interest rate sensitivity."
                         },
                          {
-                            question: "Q112: The Federal Reserve Bank of St. Louis resource on bank balance sheets explains the basic accounting equation: Assets = Liabilities +:",
+                            question: "Q172: The Federal Reserve Bank of St. Louis resource on bank balance sheets explains the basic accounting equation: Assets = Liabilities +:",
                             options: ["Revenue", "Expenses", "Profit", "Capital"],
                             correctAnswerIndex: 3,
                             difficulty: "Easy",
                             hint: "This is the fundamental equation of a balance sheet."
                         },
                          {
-                            question: "Q113: A bank's ALCO uses various tools and models to measure interest rate risk, including:",
+                            question: "Q173: A bank's ALCO uses various tools and models to measure interest rate risk, including:",
                             options: ["Customer satisfaction surveys", "Gap analysis and earnings simulation", "Employee performance reviews", "Social media analytics"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "These are common techniques for quantifying interest rate exposure."
                         },
                          {
-                            question: "Q114: If a bank's liquidity stress test reveals a potential shortfall in liquid assets under a severe scenario, ALCO should:",
+                            question: "Q174: If a bank's liquidity stress test reveals a potential shortfall in liquid assets under a severe scenario, ALCO should:",
                             options: ["Ignore the results", "Develop strategies to increase liquid assets or secure contingent funding sources", "Increase lending aggressively", "Reduce deposit rates to zero"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Stress test results should inform risk mitigation actions."
                         },
                          {
-                            question: "Q115: Managing balance sheet risk is crucial for a bank's:",
+                            question: "Q175: Managing balance sheet risk is crucial for a bank's:",
                             options: ["Marketing success", "Long-term stability and profitability", "Number of social media followers", "Employee benefits package"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
@@ -1537,8 +2047,8 @@ difficulty: "Medium",
                             type: "Video",
                             title: "How Payments Work: ACH, Wire, Card Networks",
                             source: "Youtube (Federal Reserve Bank of Atlanta)",
-                            link: "https://www.youtube.com/watch?v=22222222222", // Placeholder - Replace with actual relevant video link
-                            pageRange: "0:00 - 10:00", // Example time stamp
+                            link: "https://www.youtube.com/watch?v=k_N4_1v3t1I9", // Placeholder - Replace with actual relevant video link
+                            pageRange: "0:00 - 10:00",
                             estimatedTime: "12 min",
                             whyMatters: "Explains the fundamental mechanisms behind common payment systems used by banks."
                         },
@@ -1554,105 +2064,105 @@ difficulty: "Medium",
                     ],
                      quiz: [
                          {
-                            question: "Q116: A bank's core banking system is primarily responsible for:",
+                            question: "Q176: A bank's core banking system is primarily responsible for:",
                             options: ["Managing employee benefits", "Processing transactions, managing accounts, and maintaining customer data", "Marketing bank products", "Physical security of branches"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The core system is the central nervous system of bank operations."
                         },
                          {
-                            question: "Q117: Which of the following is NOT a major payment rail used by banks?",
+                            question: "Q177: Which of the following is NOT a major payment rail used by banks?",
                             options: ["ACH (Automated Clearing House)", "Wire Transfer", "Card Networks (Visa, Mastercard)", "Email"],
                             correctAnswerIndex: 3,
-difficulty: "Easy",
+                            difficulty: "Easy",
                             hint: "Payment rails are established systems for transferring funds."
                         },
                          {
-                            question: "Q118: Cybersecurity in banking is essential to protect:",
+                            question: "Q178: Cybersecurity in banking is essential to protect:",
                             options: ["Only the bank's profits", "Customer data, financial assets, and system integrity", "Employee lunch breaks", "The color of the bank's logo"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Cybersecurity protects valuable and sensitive information and systems."
                         },
                          {
-                            question: "Q119: The FFIEC Information Technology Examination Handbook provides guidance for examiners on assessing a bank's:",
+                            question: "Q179: The FFIEC Information Technology Examination Handbook provides guidance for examiners on assessing a bank's:",
                             options: ["Loan underwriting standards", "Compliance with IT-related risks and controls", "Marketing effectiveness", "Branch profitability"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The handbook's title clearly indicates its focus."
                         },
                          {
-                            question: "Q120: ACH payments are typically used for:",
+                            question: "Q180: ACH payments are typically used for:",
                             options: ["Large-value, real-time transfers", "Person-to-person cash payments", "Direct deposits and bill payments", "International wire transfers"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "ACH is commonly used for recurring electronic payments."
                         },
                          {
-                            question: "Q121: A bank's incident response plan for a cybersecurity breach should include:",
+                            question: "Q181: A bank's incident response plan for a cybersecurity breach should include:",
                             options: ["Ignoring the breach and hoping it goes away", "Pre-defined steps for identifying, containing, eradicating, and recovering from an incident", "Publicly blaming customers for the breach", "Deleting all customer data"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "A plan is needed to manage and recover from security incidents."
                         },
                          {
-                            question: "Q122: The OCC Comptroller's Handbook on Core Systems emphasizes the risks associated with:",
+                            question: "Q182: The OCC Comptroller's Handbook on Core Systems emphasizes the risks associated with:",
                             options: ["Hiring new employees", "Reliance on and management of the bank's central technology systems", "Opening new branches", "Issuing credit cards"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Core systems are critical but also pose significant risks if not managed properly."
                         },
                          {
-                            question: "Q123: Which payment rail is typically used for large-value, urgent transfers?",
+                            question: "Q183: Which payment rail is typically used for large-value, urgent transfers?",
                             options: ["ACH", "Wire Transfer", "Card Networks", "Checks"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "This system allows for rapid, final settlement of funds."
                         },
                          {
-                            question: "Q124: A bank's third-party risk management program is important because:",
+                            question: "Q184: A bank's third-party risk management program is important because:",
                             options: ["It allows the bank to avoid all risk", "Banks often rely on external vendors for critical services (like core processing or cloud hosting), introducing risks", "It reduces the need for internal staff", "It is not required by regulators"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Outsourcing functions doesn't outsource the risk."
                         },
                          {
-                            question: "Q125: According to the FFIEC IT Handbook, effective information security requires:",
+                            question: "Q185: According to the FFIEC IT Handbook, effective information security requires:",
                             options: ["Only investing in expensive software", "A comprehensive program including policies, procedures, training, and technical controls", "Outsourcing all IT functions", "Ignoring employee behavior"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Security is a multi-faceted effort involving people, processes, and technology."
                         },
                          {
-                            question: "Q126: A bank is implementing a new mobile banking app. What is a key operational consideration?",
+                            question: "Q186: A bank is implementing a new mobile banking app. What is a key operational consideration?",
                             options: ["Ignoring customer feedback", "Ensuring the app is secure, reliable, and integrates correctly with the core system", "Making the app as complex as possible", "Only offering the app to a small group of customers"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "New technology channels require careful integration and risk management."
                         },
                          {
-                            question: "Q127: The Federal Reserve Bank of Atlanta video on payments explains that card networks (like Visa and Mastercard) facilitate transactions between:",
+                            question: "Q187: The Federal Reserve Bank of Atlanta video on payments explains that card networks (like Visa and Mastercard) facilitate transactions between:",
                             options: ["Only banks", "Merchants, cardholders, and financial institutions", "Only individuals", "Only businesses"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Card networks connect multiple parties in the payment process."
                         },
                          {
-                            question: "Q128: If a bank's core processing system experiences a major outage, the most immediate impact would likely be on:",
+                            question: "Q188: If a bank's core processing system experiences a major outage, the most immediate impact would likely be on:",
                             options: ["The bank's marketing efforts", "The bank's ability to process transactions and provide customer access to accounts", "Employee vacation schedules", "The bank's stock price (in the short term)"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "The core system is essential for daily operations."
                         },
                          {
-                            question: "Q129: A bank is considering partnering with a financial technology (FinTech) company to offer a new service. What is a key risk to assess during this partnership?",
+                            question: "Q189: A bank is considering partnering with a financial technology (FinTech) company to offer a new service. What is a key risk to assess during this partnership?",
                             options: ["Whether the FinTech company has a fancy office", "The FinTech company's financial stability, security controls, and compliance with regulations", "Whether the FinTech company's logo is attractive", "How many employees the FinTech company has"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "Partnering introduces third-party risk that must be evaluated."
                         },
                          {
-                            question: "Q130: The FFIEC IT Examination Handbook's section on Information Security covers topics such as:",
+                            question: "Q190: The FFIEC IT Examination Handbook's section on Information Security covers topics such as:",
                             options: ["Loan underwriting", "Access controls, data security, and incident response", "Marketing strategies", "Branch staffing levels"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
@@ -1682,7 +2192,7 @@ difficulty: "Easy",
                             type: "Reading",
                             title: "FDIC Risk Management Manual of Examination Policies: Section 10.1 - Enterprise Risk Management",
                             source: "FDIC",
-                            link: "https://www.fdic.gov/regulations/safety/manual/section10-1.pdf",
+                            link: "https://www.fdic.gov/resources/supervision-and-examinations/examination-policies-manual/section10-1.pdf",
                             pageRange: "Pages 1-15",
                             estimatedTime: "60 min",
                             whyMatters: "Outlines the FDIC's approach to examining a bank's ERM framework."
@@ -1690,114 +2200,114 @@ difficulty: "Easy",
                          {
                             type: "Video",
                             title: "The Future of Banking: FinTech, AI, and More",
-                            source: "Coursera (via Youtube snippet - original course 'FinTech and the Future of Finance')",
-                            link: "https://www.youtube.com/watch?v=33333333333", // Placeholder - Replace with actual relevant video link
-                            pageRange: "0:00 - 5:00", // Focus on the overview of trends
+                            source: "Youtube", // Source updated to be less specific
+                            link: "https://www.youtube.com/watch?v=Yf5-t2c3i8c0", // Placeholder - Replace with actual relevant video link
+                            pageRange: "0:00 - 5:00",
                             estimatedTime: "7 min",
                             whyMatters: "Provides a high-level look at technological and market trends shaping the future of banking operations."
                         }
                     ],
                      quiz: [
                          {
-                            question: "Q131: Enterprise Risk Management (ERM) in banking is a framework for:",
+                            question: "Q191: Enterprise Risk Management (ERM) in banking is a framework for:",
                             options: ["Managing only credit risk", "Identifying, assessing, monitoring, and managing all significant risks across the entire organization", "Managing only operational risk", "Ignoring emerging risks"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "ERM takes a holistic view of risk."
                         },
                          {
-                            question: "Q132: A strong bank-wide risk culture means that:",
+                            question: "Q192: A strong bank-wide risk culture means that:",
                             options: ["Risk management is only the responsibility of the compliance department", "Employees at all levels understand and are accountable for managing risks", "Risk is ignored in pursuit of profit", "Only senior management thinks about risk"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Risk culture involves everyone in the organization."
                         },
                          {
-                            question: "Q133: Which of the following is an example of an emerging risk in banking operations?",
+                            question: "Q193: Which of the following is an example of an emerging risk in banking operations?",
                             options: ["Traditional credit risk", "Cybersecurity threats from advanced persistent threats (APTs)", "Interest rate risk", "Liquidity risk from standard deposit withdrawals"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "Emerging risks are new or evolving threats."
                         },
                          {
-                            question: "Q134: The OCC Comptroller's Handbook on Enterprise Risk Management emphasizes:",
+                            question: "Q194: The OCC Comptroller's Handbook on Enterprise Risk Management emphasizes:",
                             options: ["A siloed approach to risk management", "The importance of integrating risk management into strategic decision-making", "Ignoring risks from third-party vendors", "Focusing only on compliance risk"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "ERM is about integrating risk into the core business."
                         },
                          {
-                            question: "Q135: Building future-ready digital channels for a bank involves:",
+                            question: "Q195: Building future-ready digital channels for a bank involves:",
                             options: ["Keeping outdated technology", "Focusing only on in-branch services", "Adopting new technologies, ensuring seamless customer experience, and maintaining strong security", "Ignoring mobile banking"],
                             correctAnswerIndex: 2,
                             difficulty: "Medium",
                             hint: "Future-ready channels are modern, convenient, and secure."
                         },
                          {
-                            question: "Q136: If a bank has a weak risk culture, employees might be more likely to:",
+                            question: "Q196: If a bank has a weak risk culture, employees might be more likely to:",
                             options: ["Report suspicious activity", "Take excessive risks without proper consideration or escalation", "Follow all policies and procedures", "Seek guidance on complex transactions"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "A poor risk culture can lead to employees disregarding risks."
                         },
                          {
-                            question: "Q137: The FDIC Risk Management Manual's section on ERM outlines how examiners will evaluate:",
+                            question: "Q197: The FDIC Risk Management Manual's section on ERM outlines how examiners will evaluate:",
                             options: ["The bank's marketing budget", "The effectiveness of the bank's framework for managing all significant risks", "The bank's employee benefit plan", "The number of ATMs the bank has"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The manual is for examiners assessing ERM."
                         },
                          {
-                            question: "Q138: Artificial Intelligence (AI) in banking operations could potentially be used for:",
+                            question: "Q198: Artificial Intelligence (AI) in banking operations could potentially be used for:",
                             options: ["Replacing all human employees", "Improving fraud detection, personalizing customer experiences, and automating processes", "Ignoring customer complaints", "Reducing cybersecurity measures"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "AI has various potential applications in banking, many focused on efficiency and analysis."
                         },
                          {
-                            question: "Q139: A key challenge in managing emerging risks like those associated with FinTech partnerships is:",
+                            question: "Q199: A key challenge in managing emerging risks like those associated with FinTech partnerships is:",
                             options: ["They are always easy to understand", "They often involve complex technologies and require new approaches to risk assessment and monitoring", "They never impact traditional banking", "They are not regulated"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "New technologies and partnerships introduce novel risks."
                         },
                          {
-                            question: "Q140: The Coursera video snippet on the future of banking highlights the impact of:",
+                            question: "Q200: The Coursera video snippet on the future of banking highlights the impact of:",
                             options: ["Only traditional banking models", "Technological advancements like FinTech and AI", "Physical branch expansion", "Manual processes"],
                             correctAnswerIndex: 1,
                             difficulty: "Easy",
                             hint: "The video focuses on future trends."
                         },
                          {
-                            question: "Q141: When building future-ready digital channels, a bank must prioritize:",
+                            question: "Q201: When building future-ready digital channels, a bank must prioritize:",
                             options: ["Making them difficult to use", "Security and resilience against cyber threats", "Requiring customers to visit a branch to use them", "Using outdated software"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "Security is paramount for digital platforms handling sensitive data."
                         },
                          {
-                            question: "Q142: Which of the following is a benefit of a strong ERM framework?",
+                            question: "Q202: Which of the following is a benefit of a strong ERM framework?",
                             options: ["Increased likelihood of regulatory penalties", "Improved ability to make informed strategic decisions by considering risks and opportunities", "Ignoring risk management", "Reduced understanding of the bank's risk profile"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
                             hint: "ERM supports better decision-making."
                         },
                          {
-                            question: "Q143: If a bank is considering implementing a new AI-powered loan application system, a key risk consideration is:",
+                            question: "Q203: If a bank is considering implementing a new AI-powered loan application system, a key risk consideration is:",
                             options: ["Whether the AI can make coffee", "Potential bias in the AI's lending decisions, leading to Fair Lending violations", "Whether the AI can predict the weather", "How much electricity the AI uses"],
                             correctAnswerIndex: 1,
                             difficulty: "Hard",
                             hint: "AI algorithms can inadvertently perpetuate or create bias, leading to compliance issues."
                         },
                          {
-                            question: "Q144: The concept of 'operational resilience' in banking, increasingly important for future operations, refers to:",
+                            question: "Q204: The concept of 'operational resilience' in banking, increasingly important for future operations, refers to:",
                             options: ["The bank's ability to withstand and recover from disruptions (e.g., cyberattacks, natural disasters)", "The bank's ability to open new branches quickly", "The bank's ability to hire new employees easily", "The bank's ability to reduce lending"],
                             correctAnswerIndex: 0,
                             difficulty: "Hard",
                             hint: "Resilience is about maintaining critical functions during and after disruptive events."
                         },
                          {
-                            question: "Q145: The OCC's guidance on ERM suggests that the framework should be tailored to the bank's:",
+                            question: "Q205: The OCC's guidance on ERM suggests that the framework should be tailored to the bank's:",
                             options: ["Competitors' strategies", "Size, complexity, and risk profile", "Marketing budget", "Employee count"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
@@ -1817,7 +2327,7 @@ difficulty: "Easy",
         const lessonsContent = document.getElementById('lessons-content');
         const quizContent = document.getElementById('quiz-content');
 
-        let currentWeekIndex = -1; // -1 for intro, 0-7 for weeks
+        let currentWeekIndex = -1; // -1 for intro, 0-10 for lessons
 
         // Function to render the Introduction page
         function renderIntroduction() {
@@ -1833,7 +2343,7 @@ difficulty: "Easy",
                 </ul>
                 <h2>Course Structure</h2>
                 <p>${metadata.lessonPlanIntro}</p>
-                <p>Use the sidebar on the left to navigate through the weekly modules.</p>
+                <p>Use the sidebar on the left to navigate through the modules.</p>
             `;
              tabs.querySelector('[data-tab="introduction"]').classList.add('active');
              tabs.querySelector('[data-tab="lessons"]').style.display = 'none';
@@ -1861,8 +2371,8 @@ difficulty: "Easy",
                 button.classList.add('week-button');
                 button.dataset.week = index;
                 button.innerHTML = `
-                    <img src="https://placehold.co/30x30/214E9A/ffffff?text=L${index + 1}" alt="Lesson ${index + 1} Icon">
-                    Lesson ${index + 1}: ${week.title}
+                    <img src="https://placehold.co/30x30/214E9A/ffffff?text=L${index}" alt="Lesson ${index} Icon">
+                    Lesson ${index}: ${week.title}
                 `;
                 sidebar.appendChild(button);
             });
@@ -1872,7 +2382,7 @@ difficulty: "Easy",
         function renderLessons(weekIndex) {
             const week = courseData.weeks[weekIndex];
             lessonsContent.innerHTML = `
-                <h2>Lesson ${weekIndex + 1}: ${week.title}</h2>
+                <h2>Lesson ${weekIndex}: ${week.title}</h2>
                 <h3>Outcomes:</h3>
                 <ul>
                     ${week.outcomes.map(outcome => `<li>${outcome}</li>`).join('')}
@@ -1903,7 +2413,7 @@ difficulty: "Easy",
         function renderQuiz(weekIndex) {
             const week = courseData.weeks[weekIndex];
             quizContent.innerHTML = `
-                <h2>Quiz: Lesson ${weekIndex + 1} - ${week.title}</h2>
+                <h2>Quiz: Lesson ${weekIndex} - ${week.title}</h2>
                 <div id="quiz-questions-container">
                     </div>
                  <button id="quiz-submit-button">Submit Quiz</button>
@@ -1918,7 +2428,7 @@ difficulty: "Easy",
                         <h4>${q.question}</h4>
                         ${q.options.map((option, oIndex) => `
                             <label>
-                                <input type="radio" name="question-${qIndex}" value="${oIndex}">
+                                <input type="radio" name="question-${weekIndex}-${qIndex}" value="${oIndex}">
                                 ${option}
                             </label>
                         `).join('')}
@@ -1946,7 +2456,7 @@ difficulty: "Easy",
             const passingScore = Math.ceil(totalQuestions * 0.80); // 80% rounded up
 
             week.quiz.forEach((q, qIndex) => {
-                const selectedOption = document.querySelector(`input[name="question-${qIndex}"]:checked`);
+                const selectedOption = document.querySelector(`input[name="question-${currentWeekIndex}-${qIndex}"]:checked`);
                 const questionElement = document.querySelector(`.quiz-question[data-question-index="${qIndex}"]`);
                 const hintElement = questionElement.querySelector('.quiz-hint');
 
