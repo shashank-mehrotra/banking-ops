@@ -16,9 +16,6 @@
             --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             --border-radius: 0.75rem; /* rounded-xl */
-            --quiz-easy: #d4edda; /* Light green */
-            --quiz-medium: #fff3cd; /* Light yellow */
-            --quiz-hard: #f8d7da; /* Light red */
             --pass-green: #28a745;
             --fail-red: #dc3545;
         }
@@ -254,11 +251,13 @@
             line-height: 1.5;
         }
 
-        .quiz-question input[type="radio"] {
+        .quiz-question input[type="radio"],
+        .quiz-question input[type="checkbox"] {
             margin-right: 10px;
         }
 
-        .quiz-difficulty {
+        /* Removed difficulty styles */
+        /* .quiz-difficulty {
             font-size: 0.9em;
             font-weight: 600;
             padding: 3px 8px;
@@ -268,8 +267,8 @@
         }
 
         .difficulty-Easy { background-color: var(--quiz-easy); color: #155724; }
-        .difficulty-Medium { background-color: var(--quiz-medium); color: #fff3cd; }
-        .difficulty-Hard { background-color: var(--quiz-hard); color: #721c24; }
+        .difficulty-Medium { background-color: var(--quiz-medium); color: #856404; }
+        .difficulty-Hard { background-color: var(--quiz-hard); color: #721c24; } */
 
         #quiz-submit-button {
             display: block;
@@ -2112,7 +2111,7 @@
                             options: ["Ignoring customer feedback", "Ensuring the app is secure, reliable, and integrates correctly with the core system", "Making the app as complex as possible", "Only offering the app to a small group of customers"],
                             correctAnswerIndex: 1,
                             difficulty: "Medium",
-                            hint: "New technology channels require careful integration and risk management."
+                            hint: "New technology channels requires careful integration and risk management."
                         },
                          {
                             question: "Q187: The Federal Reserve Bank of Atlanta video on payments explains that card networks (like Visa and Mastercard) facilitate transactions between:",
@@ -2396,13 +2395,16 @@
 
             const quizQuestionsContainer = document.getElementById('quiz-questions-container');
             week.quiz.forEach((q, qIndex) => {
+                // Determine input type based on whether correctAnswerIndices is an array
+                const inputType = Array.isArray(q.correctAnswerIndices) ? 'checkbox' : 'radio';
+                const nameAttr = `question-${weekIndex}-${qIndex}` + (inputType === 'checkbox' ? '[]' : ''); // Append [] for checkboxes
+
                 quizQuestionsContainer.innerHTML += `
                     <div class="quiz-question" data-question-index="${qIndex}">
-                        <div class="quiz-difficulty difficulty-${q.difficulty}">${q.difficulty}</div>
                         <h4>${q.question}</h4>
                         ${q.options.map((option, oIndex) => `
                             <label>
-                                <input type="radio" name="question-${weekIndex}-${qIndex}" value="${oIndex}">
+                                <input type="${inputType}" name="${nameAttr}" value="${oIndex}">
                                 ${option}
                             </label>
                         `).join('')}
@@ -2430,28 +2432,44 @@
             const passingScore = Math.ceil(totalQuestions * 0.80); // 80% rounded up
 
             week.quiz.forEach((q, qIndex) => {
-                const selectedOption = document.querySelector(`input[name="question-${currentWeekIndex}-${qIndex}"]:checked`);
                 const questionElement = document.querySelector(`.quiz-question[data-question-index="${qIndex}"]`);
                 const hintElement = questionElement.querySelector('.quiz-hint');
+                const inputType = Array.isArray(q.correctAnswerIndices) ? 'checkbox' : 'radio';
+                const selectedOptions = Array.from(questionElement.querySelectorAll(`input[name^="question-${currentWeekIndex}-${qIndex}"]:checked`));
 
                 // Reset previous feedback
                 questionElement.style.border = 'none';
                 hintElement.classList.remove('show');
                 hintElement.textContent = '';
 
-                if (selectedOption) {
-                    if (parseInt(selectedOption.value) === q.correctAnswerIndex) {
-                        correctCount++;
-                        questionElement.style.border = '2px solid var(--pass-green)';
-                    } else {
-                        questionElement.style.border = '2px solid var(--fail-red)';
-                        hintElement.textContent = `Hint: ${q.hint}`;
-                        hintElement.classList.add('show');
+                let isCorrect = false;
+
+                if (inputType === 'radio') {
+                    const selectedOption = selectedOptions[0]; // Only one can be selected for radio
+                     if (selectedOption && parseInt(selectedOption.value) === q.correctAnswerIndex) {
+                        isCorrect = true;
                     }
+                } else if (inputType === 'checkbox') {
+                    const selectedIndices = selectedOptions.map(option => parseInt(option.value)).sort();
+                    const correctIndices = q.correctAnswerIndices.sort();
+
+                    // Check if the number of selected options matches the number of correct options
+                    // and if all selected options are among the correct options.
+                    // For strict correctness (must select *all* correct and *only* correct):
+                    if (selectedIndices.length === correctIndices.length &&
+                        selectedIndices.every((val, index) => val === correctIndices[index])) {
+                         isCorrect = true;
+                     }
+                     // If partial credit or other logic is needed, this would be more complex.
+                     // Sticking to strict correctness for now.
+                }
+
+                if (isCorrect) {
+                    correctCount++;
+                    questionElement.style.border = '2px solid var(--pass-green)';
                 } else {
-                     // No answer selected - mark as incorrect and show hint if available
-                     questionElement.style.border = '2px solid var(--fail-red)';
-                     if (q.hint) {
+                    questionElement.style.border = '2px solid var(--fail-red)';
+                    if (q.hint) {
                          hintElement.textContent = `Hint: ${q.hint}`;
                          hintElement.classList.add('show');
                      }
